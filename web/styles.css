@@ -1,180 +1,165 @@
+/* ========= Reserved Elements (General) ========== */
 *
 {
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
+
 header
 {
-  background-color:#292b2f;
-  height: 150px;
-  background-image:url(artarchivelogo.jpeg);
-  background-repeat:no-repeat;
-  position:relative;
+	background-color: #292b2f;
+	height: 150px;
+	background-image: url(artarchivelogo.jpeg);
+	background-repeat: no-repeat;
+	/*position: relative;*/
 }
+
 h1
 {
-  padding-top:45px;
-  padding-left:100px;
-  font-size: 2.5em;
-  color: #d7d5d9;
-  text-align:center;
-}
-body
-{
-  font-family: Arial;
-  margin: 0;
-  background-color: #3bbfc3;
-}
-body
-{
-   background:#a5b5c5;
-   background:lightblue !important;
-}
-.header 
-{
-  padding: 60px;
-  text-align: center;
-  background: #292b2f;
-  color: #d7d5d9;
-  font-size: 30px;
-}
-nav
-{
-  float:left;
-  text-align:center;
-  font-weight:bold;
-  font-size:1.5em;
-  padding-top:10px;
-  display: block;
-  background-color:#292b2f;
-  margin-left:auto;
-  margin-right:auto;
-  width: 200px;
-}
-nav a
-{
-    text-decoration-line:none;
-}
-nav a:link
-{
-    color:#d7d5d9;
-}
-nav a:visited
-{
-    color:#40af93;
-}
-nav a:hover
-{
-    color:#018185;
-}
-nav ul
-{
-    list-style-type:none;
-    padding-left:1;
-}
-form
-{
-padding:2em;
-margin-left:10em;
-}
-label
-{
-  float:left;
-  display:block;
-  text-align:center;
-  width:20em;
-  padding-right:2em;
-}
-h2.content
-{
-  margin-left:10em;
-  padding : 2em;
-}
-input,textarea
-{
-  display:block;
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */ 
-  border: 1px solid #ccc;
-  border-radius: 3px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 4px; /* Add a top margin */
-  margin-bottom: 14px; /* Bottom margin */
-  resize: vertical
-}
-label
-{
-    float:left;
-    display:block;
-    text-align:right;
-    width:8em;
-    padding-right:1em;
-}
-#mySubmit
-{
-    margin-left:10em;
+	padding-top: 45px;
+	padding-left: 100px;
+	font-size: 2.5em;
+	color: #d7d5d9;
+	text-align: center;
 }
 h1.content 
 {
-color: #292b2f;
+	color: #292b2f;
 }
-.box
+
+h2.content
 {
-   background: #40af93;
-   border-radius: 4px;
-   transition: transform .2s; /* Animation */
+	margin-left: 10em;
+	padding: 2em;
 }
-.box:hover 
+
+body
 {
-  -ms-transform: scale(1.2); /* IE 9 */
-  -webkit-transform: scale(1.2); /* Safari 3-8 */
-  transform: scale(1.2);
+	font-family: Arial;
+	margin: 0;
+	background-color: #3bbfc3;
+	background: #a5b5c5;
+	background: lightblue !important;
 }
-.col-lg-2, .col-md-3, .col-xs-6
+
+form
 {
-  margin-top: 30px !important;
+	padding: 2em;
+	margin-left: 10em;
 }
+
+.modal-body form
+{
+	padding: 0em;
+	margin-left: 0em;
+}
+
+/*label
+{
+	float: left;
+	display: block;
+	text-align: center;
+	width: 20em;
+	padding-right: 2em;
+}*/
+
+input,textarea
+{
+	display: block;
+	width: 100%; /* Full width */
+	padding: 12px; /* Some padding */ 
+	border: 1px solid #ccc;
+	border-radius: 3px; /* Rounded borders */
+	box-sizing: border-box; /* Make sure that padding and width stays in place */
+	margin-top: 4px; /* Add a top margin */
+	margin-bottom: 14px; /* Bottom margin */
+	resize: vertical;
+}
+
 img 
 {
-width: 100%;
-height: 100%;
-opacity: 1;
-display: block;
-width: 100%;
-height: auto;
-transition: filter .5;
-backface-visibility: hidden;
--webkit-filter: blur(0px); /* Safari 6.0 - 9.0 */
-filter: blur(0px);
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: filter .5;
+	backface-visibility: hidden;
+	-webkit-filter: blur(0px); /* Safari 6.0 - 9.0 */
+	filter: blur(0px);
 }
 img:hover 
 {
-  opacity: 0.5;
+	opacity: 0.5;
 }
-.content
-{
-padding: 20px;
-background: #3bbfc3;
-}
+
 footer 
 {
-  background-color: #292b2f;
-  color: #d7d5d9;
-  padding: 15px;
+	background-color: #292b2f;
+	color: #d7d5d9;
+	padding: 15px;
 }
-.navbar
- {
-  margin-bottom: 0;
-  border-radius: 0;
+
+/* ========== Custom Classes and IDs ========== */
+
+
+.box
+{
+	background: #40af93;
+	border-radius: 4px;
+	transition: transform .2s; /* Animation */
 }
-.row.content {height: auto}
+.box:hover 
+{
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari 3-8 */
+	transform: scale(1.2);
+}
+
+.col-lg-2, .col-md-3, .col-xs-6
+{
+	margin-top: 30px !important;
+}
+
+.content
+{
+	padding: 20px;
+	background: #3bbfc3;
+}
+
+.row.content 
+{
+	height: auto;
+}
+
 .sidenav 
 {
-  padding-top: 20px;
-  background-color: #292b2f;
-  color: #d7d5d9;
-  height: 100%;
+	padding-top: 20px;
+	background-color: #292b2f;
+	color: #d7d5d9;
+	height: 100%;
 }
-@media screen and (max-width: 767px)
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+}
+
+#mySubmit
+{
+    margin-left: 10em;
+}
+
+/* ========== Media Specific (Responsive) ========== */
+
+/*@media screen and (max-width: 767px)
 {
   .sidenav 
   {
@@ -183,3 +168,4 @@ footer
   }
   .row.content {height:auto;} 
 }
+*/

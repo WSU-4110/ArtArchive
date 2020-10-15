@@ -12,39 +12,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<header><h1>ART ARCHIVE - Sales</h1></header>
 <body>
-<div class="header">
-  <h1>ART ARCHIVE</h1>
-  <p>Sales</p> 
-</div>
-<div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav .nav-fill">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Sales <i class="fas fa-comments-dollar"></i><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="sales.html">Art Sales <i class="fas fa-comments-dollar"></i><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Home <i class="fas fa-archway"></i></a>
+        <a class="nav-link" href="index.html">Home <i class="fas fa-archway"></i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">My Account <i class="far fa-address-book"></i></a>
+        <a class="nav-link disabled" href="#">Profile<i class="far fa-address-book"></i></a>
       </li>
 	  <li class="nav-item">
-        <a class="nav-link" href="#">Register <i class="fas fa-address-book"></i></a>
+        <a class="nav-link" href="#">Register<i class="fas fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us<i class="fas fa-address-book"></i></a>
       </li>
     </ul>
   </div>
 </nav>
-</div>
 <div class="content">
-	<center><h1>Available Listings</h1></center>
+	<center><h2>Available Listings</h2></center>
+	<div id="myData"></div>
 	<div class="container">
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Post
@@ -68,11 +67,13 @@
 					</div>
 					<div class="form-group">
 						<div class="input-group mb-3">
-						  <div class="input-group-prepend">
-							<span class="input-group-text">$</span>
-							<span class="input-group-text">0.00</span>
-						  </div>
-						  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+							<div class="input-group-append">
+								<span class="input-group-text">.00</span>
+							</div>
 						</div>
 					</div>
 				<form>
