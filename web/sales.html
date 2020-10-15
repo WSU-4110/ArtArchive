@@ -12,39 +12,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<header><h1>ART ARCHIVE - Sales</h1></header>
 <body>
-<div class="header">
-  <h1>ART ARCHIVE</h1>
-  <p>Sales</p> 
-</div>
-<div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav .nav-fill">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Sales <i class="fas fa-comments-dollar"></i><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="sales.html">Art Sales <i class="fas fa-comments-dollar"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Home <i class="fas fa-archway"></i></a>
+        <a class="nav-link" href="index.html">Home <i class="fas fa-archway"></i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">My Account <i class="far fa-address-book"></i></a>
+        <a class="nav-link disabled" href="#">Profile <i class="far fa-address-book"></i></a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="#">Register <i class="fas fa-address-book"></i></a>
       </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us <i class="fas fa-address-book"></i></a>
+      </li>
     </ul>
   </div>
 </nav>
-</div>
 <div class="content">
-	<center><h1>Available Listings</h1></center>
+	<center><h2>Available Listings</h2></center>
+	<div id="myData"></div>
 	<div class="container">
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Post
@@ -60,27 +59,27 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				<form>
+				<form  method = "post" action = "https://webdevbasics.net/scripts/javajam8.php">
 					<div class="form-group">
 						<label for="titleInput">Title</label>
-						<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
+						<input type="text" class="form-control" id="title" name="titleArtwork" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
 						<small id="titleHelp" class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
 					</div>
 					<div class="form-group">
 						<div class="input-group mb-3">
-						  <div class="input-group-prepend">
-							<span class="input-group-text">$</span>
-							<span class="input-group-text">0.00</span>
-						  </div>
-						  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+							<div class="input-group-prepend">
+								<span class="input-group-text">$</span>
+							</div>
+							<input type="text" class="form-control" id="price" name="priceArtwork" aria-label="Amount (to the nearest dollar)">
+							<div class="input-group-append">
+								<span class="input-group-text">.00</span>
+							</div>
 						</div>
 					</div>
-				<form>
 					<div class="form-group">
 					<label for="exampleFormControlFile1">Piece Input</label>
-					<input type="file" class="form-control-file" id="exampleFormControlFile1">
+					<input type="file" class="form-control-file" id="file" name="fileArtwork">
 					</div>
-				</form>
 				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			  </div>
@@ -93,17 +92,23 @@
 		<div class="row">
 			<div class="col-lg-2 col-md-3 col-xs-4 ">
 				<div class="box">
-				<img src="https://tinyurl.com/y4b6byep">
-				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">The Snail</div>
-				</div>
+					<img src="https://tinyurl.com/y4b6byep">
+					<div>
+						<div class="shadow-none p-3 bg-light">The Snail</div>
+					</div>
+					<div>
+						<div class="shadow-none p-3 mb-5 bg-light">$14.99</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-4 ">
 				<div class="box">
 				<img src="https://tinyurl.com/y45dq4so">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Hallowed Red</div>
+					<div class="shadow-none p-3 bg-light">Hallowed Red</div>
+				</div>
+				<div>
+					<div class="shadow-none p-3 mb-5 bg-light">$89.95</div>
 				</div>
 				</div>
 			</div>
@@ -111,55 +116,64 @@
 				<div class="box">
 				<img src="https://tinyurl.com/y3hdsj2m">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Self Portrait</div>
+					<div class="shadow-none p-3 bg-light">Self Portrait</div>
+				</div>
+				<div>
+					<div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
 				</div>
 				</div>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-4 ">
 				<div class="box">
-				<img src="https://tinyurl.com/y4b6byep">
+					<img src="https://tinyurl.com/y5mlca3v">
+					<div>
+						<div class="shadow-none p-3 bg-light">Success</div>
+					</div>
+					<div>
+						<div class="shadow-none p-3 mb-5 bg-light">$99.99</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-3 col-xs-4 ">
+				<div class="box">
+				<img src="https://tinyurl.com/y3243mrb">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">The Snail</div>
+					<div class="shadow-none p-3 bg-light">Pattern in Yellow</div>
+				</div>
+				<div>
+					<div class="shadow-none p-3 mb-5 bg-light">$612.05</div>
 				</div>
 				</div>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-4 ">
 				<div class="box">
-				<img src="https://tinyurl.com/y45dq4so">
+				<img src="https://tinyurl.com/yxekvz4h">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Hallowed Red</div>
+					<div class="shadow-none p-3 bg-light">Heirs</div>
+				</div>
+				<div>
+					<div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
+				</div>
+				</div>
+			</div>			<div class="col-lg-2 col-md-3 col-xs-4 ">
+				<div class="box">
+				<img src="https://tinyurl.com/y6sqrghg">
+				<div>
+					<div class="shadow-none p-3 bg-light">The Deeds to be</div>
+				</div>
+				<div>
+					<div class="shadow-none p-3 mb-5 bg-light">$59.99</div>
 				</div>
 				</div>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-4 ">
 				<div class="box">
-				<img src="https://tinyurl.com/y3hdsj2m">
+				<img src="https://tinyurl.com/y4jeglzc">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Self Portrait</div>
+					<div class="shadow-none p-3 bg-light">Wartime</div>
 				</div>
-				</div>
-			</div>
-			<div class="col-lg-2 col-md-3 col-xs-4 ">
-				<div class="box">
-				<img src="https://tinyurl.com/y4b6byep">
 				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">The Snail</div>
-				</div>
-				</div>
-			</div>
-			<div class="col-lg-2 col-md-3 col-xs-4 ">
-				<div class="box">
-				<img src="https://tinyurl.com/y45dq4so">
-				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Hallowed Red</div>
-				</div>
-				</div>
-			</div>
-			<div class="col-lg-2 col-md-3 col-xs-4 ">
-				<div class="box">
-				<img src="https://tinyurl.com/y3hdsj2m">
-				<div>
-					<div class="shadow-none p-3 mb-5 bg-light rounded">Self Portrait</div>
+					<div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
 				</div>
 				</div>
 			</div>
