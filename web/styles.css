@@ -20,6 +20,19 @@ header
 	/*position: relative;*/
 }
 
+nav a:link
+{
+    color:#d7d5d9;
+}
+nav a:visited
+{
+    color:#40af93;
+}
+nav a:hover
+{
+    color:#018185;
+}
+
 h1
 {
 	padding-top: 45px;
