@@ -1,9 +1,9 @@
 <?php
-$field_name = $_POST['cf_name'];
-$field_email = $_POST['cf_email'];
-$field_message = $_POST['cf_message'];
+$field_name = $_POST['firstname', 'lastname'];
+$field_email = $_POST['email'];
+$field_message = $_POST['Message'];
 
-$mail_to = 'shussain1104@gmail.com';
+$mail_to = 'cutelove1904@gmail.com';
 $subject = 'Message from a site visitor '.$field_name;
 
 $body_message = 'From: '.$field_name."\n";
