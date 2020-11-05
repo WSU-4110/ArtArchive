@@ -74,14 +74,19 @@ form
 	margin-left: 0em;
 }
 
-/*label
+label
 {
 	float: left;
 	display: block;
 	text-align: center;
 	width: 20em;
 	padding-right: 2em;
-}*/
+}
+
+button
+{
+	margin-bottom: 25px;
+}
 
 input,textarea
 {
