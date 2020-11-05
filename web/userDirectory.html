@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Art Archive - Directory </title>
+<script src="https://kit.fontawesome.com/1369e0e729.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<header><h1>ART ARCHIVE - Directory</h1></header>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav .nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="sales.html">Art Sales <i class="fas fa-comments-dollar"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home <i class="fas fa-archway"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="userDirectory.html">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profilePage.html">Profile <i class="far fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="#">Register <i class="fas fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us <i class="fas fa-address-book"></i></a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="Questionboard.html">Q&A Board <i class="fas fa-archway"></i></a>
+		  </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="directories.html">Directories <i class="fas fa-book"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="content">
+	<div class="container">
+			<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Post
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<form  method = "post" action = "https://webdevbasics.net/scripts/javajam8.php">
+					<div class="form-group">
+						<label for="titleInput">Title</label>
+						<input type="text" class="form-control" id="title" name="titleArtwork" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
+						<small id="titleHelp" class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
+					</div>
+					<div class="form-group">
+					<label for="exampleFormControlFile1">Piece Input</label>
+					<input type="file" class="form-control-file" id="file" name="fileArtwork">
+					</div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col-lg">
+			  <div class="articles card">
+				<div class="card-close">
+				  <div class="dropdown">
+					<button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+					<div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+				  </div>
+				</div>
+				<div class="card-header d-flex align-items-center">
+				  <h2 class="h3">Latest</h2>
+				</div>
+				<div class="card-body no-padding">
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="docs/clay.docx" download>
+						<h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">How to make an ashtray from bread</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg">
+			  <div class="articles card">
+				<div class="card-close">
+				  <div class="dropdown">
+					<button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+					<div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+				  </div>
+				</div>
+				<div class="card-header d-flex align-items-center">
+				  <h2 class="h3">Popular</h2>
+				</div>
+				<div class="card-body no-padding">
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
+				  </div>
+				  <div class="item d-flex align-items-center">
+					<div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
+					<div class="text"><a href="#">
+						<h3 class="h5">How to make an ashtray from bread</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
