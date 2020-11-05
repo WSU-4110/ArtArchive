@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<header><h1>ART ARCHIVE - Contact</h1></header>
+<header><h1>Art Archive- Q&A Board</h1></header>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
         <a class="nav-link" href="userDirectory.html">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="profilePage.html">Profile <i class="far fa-address-book"></i></a>
+        <a class="nav-link disabled" href="#">Profile <i class="far fa-address-book"></i></a>
       </li>
 	  <li class="nav-item">
         <a class="nav-link" href="#">Register <i class="fas fa-address-book"></i></a>
@@ -38,37 +38,41 @@
 	  <li class="nav-item  active">
         <a class="nav-link" href="contact.html">Contact Us <i class="fas fa-address-book"></i></a>
       </li>
-	  <li class="nav-item">
+      <li class="nav-item">
+    <a class="nav-link" href="Questionboard.html">Q&A Board <i class="fas fa-archway"></i></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="directories.html">Directories <i class="fas fa-book"></i></a>
       </li>
     </ul>
   </div>
 </nav>
-    <div class="content">
-        <h2>Contact Us</h2>
-        <p>If you need to get in contact with us, fill out the form below to send a message</p>
-        <form method = "post" action = "contact.php">
-            <label for="fname">First Name</label>
-                 <input type="text" id="fname" name="firstname" placeholder="Your name..">
-            <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-            <label for="email">*Email:</label>
-                <input type = "email" name = "Email" id = "email" required = "required">
-            <label for="issue">List of Issues Possible: </label>
-                <select id="issue" name="issue" placeholder = "Pick from the list of issues..">
-                    <option value="Page Not Loading">Page isn't loading</option>
-                    <option value="Unable to Post">Unable to Post Artwork</option>
-                    <option value="other">Other</option><br>
-                    </select>
-            <p> If other is selected, explain in the message field below.</p>
-            <label for = "message">Message:</label>
-                 <textarea name = "Message" rows = "5" cols = "15"></textarea>
-                    <button type="submit" value = "Send Message Now" id="mySubmit" required = "required" a href = "mailto:s.hussain1104@gmail.com">
-                      Send Message Now</button>
-					</form>
-    </div>
-</body>
-<footer class="container-fluid text-center">
-    <p><small>Copyright &copy Art Archive 2020</small></p>
-  </footer>
+<main>
+  <h2>Questions</h2>
+  <body>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Post
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+    <form method = "post" action = "questionboard.php">
+      	<div class="form-group">
+          <label> Name/Username: </label><br>
+       <input type="text" name="topic_author" size=40 maxlength=150>
+     <label>Topic:</label><br>
+      <input type="text" name="topic_title" size=40 maxlength=150>
+          <left><label for="subject">Question:</label></left>
+        <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
+        <button type="submit" value = "Submit"  required = "required">Submit</button>
+    </form>
+  </body>
+</main>
 </html>
