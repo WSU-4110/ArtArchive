@@ -19,28 +19,37 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+	<!-- Nav Component -->
     <ul class="navbar-nav .nav-fill">
+	  <!-- Nav Leaf -->
       <li class="nav-item">
         <a class="nav-link" href="sales.html">Art Sales <i class="fas fa-comments-dollar"></i></a>
       </li>
+	  <!-- Nav Leaf -->
       <li class="nav-item">
         <a class="nav-link" href="index.html">Home <i class="fas fa-archway"></i></a>
       </li>
+	  <!-- Nav Leaf -->
       <li class="nav-item active">
         <a class="nav-link" href="userDirectory.html">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
       </li>
+	  <!-- Nav Leaf -->
       <li class="nav-item">
         <a class="nav-link" href="profilePage.html">Profile <i class="far fa-address-book"></i></a>
       </li>
+	  <!-- Nav Leaf -->
 	  <li class="nav-item">
         <a class="nav-link" href="#">Register <i class="fas fa-address-book"></i></a>
       </li>
+	  <!-- Nav Leaf -->
 	  <li class="nav-item">
         <a class="nav-link" href="contact.html">Contact Us <i class="fas fa-address-book"></i></a>
 	  </li>
+	  <!-- Nav Leaf -->
 	  <li class="nav-item">
 		<a class="nav-link" href="Questionboard.html">Q&A Board <i class="fas fa-archway"></i></a>
-		  </li>
+      </li>
+	  <!-- Nav Leaf -->
 	  <li class="nav-item">
         <a class="nav-link" href="directories.html">Directories <i class="fas fa-book"></i></a>
       </li>
@@ -49,10 +58,10 @@
 </nav>
 <div class="content">
 	<div class="container">
-			<!-- Button trigger modal -->
+		<!-- Button Component -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Post
 		</button>
-		<!-- Modal -->
+		<!-- Modal Component -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -62,13 +71,16 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
+			  <!-- Display Component -->
 			  <div class="modal-body">
 				<form  method = "post" action = "https://webdevbasics.net/scripts/javajam8.php">
+					<!-- Form Leaf -->
 					<div class="form-group">
 						<label for="titleInput">Title</label>
-						<input type="text" class="form-control" id="title" name="titleArtwork" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
+							<input type="text" class="form-control" id="title" name="titleArtwork" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
 						<small id="titleHelp" class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
 					</div>
+					<!-- Form Component -->
 					<div class="form-group">
 						<label for="exampleFormControlFile1">File Upload</label>
 						<input type="file" class="form-control-file" id="file" name="fileArtwork">
@@ -83,9 +95,11 @@
 		  </div>
 		</div>
 		<div class="row">
+			<!-- Column Component -->
 			<div class="col-lg">
 			  <div class="articles card">
 				<div class="card-close">
+				<!-- Dropdown Leaf -->
 				  <div class="dropdown">
 					<button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
 					<div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
@@ -95,26 +109,31 @@
 				  <h2 class="h3">Latest</h2>
 				</div>
 				<div class="card-body no-padding">
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="docs/clay.docx" download>
 						<h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="docs/sculpt.docx" download>
 						<h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="docs/howto1.docx" download>
 						<h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="docs/howto2.docx" download>
 						<h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="docs/ash.docx" download>
@@ -141,26 +160,31 @@
 				  <h2 class="h3">Popular</h2>
 				</div>
 				<div class="card-body no-padding">
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="#">
 						<h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="#">
 						<h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="#">
 						<h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="#">
 						<h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
 				  </div>
+				  <!-- Flex Leaf -->
 				  <div class="item d-flex align-items-center">
 					<div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
 					<div class="text"><a href="#">
