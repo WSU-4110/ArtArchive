@@ -50,8 +50,8 @@
 <main>
   <h2>Questions</h2>
   <body>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Post
-		</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Post </button>
+    <!--The button New Post is the exact same as Create New Post-->
 		<!-- Modal -->
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -59,19 +59,23 @@
 			  <div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">New Post</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span>
+			  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
 			  <div class="modal-body">
     <form method = "post" action = "questionboard.php">
-      	<div class="form-group">
-          <label> Name/Username: </label><br>
-       <input type="text" name="topic_author" size=40 maxlength=150>
-     <label>Topic:</label><br>
-      <input type="text" name="topic_title" size=40 maxlength=150>
-          <left><label for="subject">Question:</label></left>
-        <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
-        <button type="submit" value = "Submit"  required = "required">Submit</button>
+      <div class="form-group">
+        <label> Name/Username: </label><br>
+          <input type="text" name="topic_author" size=40 maxlength=150>
+          <!--Same as addName()-->
+        <label>Topic:</label><br>
+          <input type="text" name="topic_title" size=40 maxlength=150>
+          <!--Same as addTopic()-->
+        <left><label for="subject">Question:</label></left>
+          <!--Same as addQuestion()-->
+          <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
+          <button type="submit" value = "Submit"  required = "required">Submit</button>
+          <!--Submit will register the post and then a separate function will be written for the post to display-->
     </form>
   </body>
 </main>
