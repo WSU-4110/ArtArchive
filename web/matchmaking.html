@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Heading for the website -->
+<title>Art Archive - Home</title>
+<!-- Adding the appropriate bootstrap scripts -->
+<script src="https://kit.fontawesome.com/1369e0e729.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
+<script src="scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+        .control {
+            font-family: arial;
+            display: block;
+            position: relative;
+            padding-left: 5px;
+            margin-bottom: 5px;
+            padding-top: 3px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+            .control input {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+            }
+        .control_indicator {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background: #e6e6e6;
+            border: 1px solid #000000;
+            border-radius: undefinedpx;
+        }
+        .control:hover input ~ .control_indicator,
+        .control input:focus ~ .control_indicator {
+            background: #cccccc;
+        }
+        
+        .control input:checked ~ .control_indicator {
+            background: #2aa1c0;
+        }
+        .control:hover input:not([disabled]):checked ~ .control_indicator,
+        .control input:checked:focus ~ .control_indicator {
+            background: #0e6647d;
+        }
+        .control input:disabled ~ .control_indicator {
+            background: #e6e6e6;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .control_indicator:after {
+            box-sizing: unset;
+            content: '';
+            position: absolute;
+            display: none;
+        }
+        .control input:checked ~ .control_indicator:after {
+            display: block;
+        }
+        .control-radio .control_indicator {
+            border-radius: 50%;
+        }
+        
+        .control-radio .control_indicator:after {
+            left: 7px;
+            top: 7px;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            background: #ffffff;
+            transition: background 250ms;
+        }
+        .control-radio input:disabled ~ .control_indicator:after {
+            background: #7b7b7b;
+        }.control-radio .control_indicator::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4.5rem;
+            height: 4.5rem;
+            margin-left: -1.3rem;
+            margin-top: -1.3rem;
+            background: #2aa1c0;
+            border-radius: 3rem;
+            opacity: 0.6;
+            z-index: 99999;
+            transform: scale(0);
+        }
+        @keyframes s-ripple {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            20% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.01;
+                transform: scale(1);
+            }
+        }
+        @keyframes s-ripple-dup {
+           0% {
+               transform: scale(0);
+            }
+           30% {
+                transform: scale(1);
+            }
+            60% {
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1);
+            }
+        }
+        .control-radio input + .control_indicator::before {
+            animation: s-ripple 250ms ease-out;
+        }
+        .control-radio input:checked + .control_indicator::before {
+            animation-name: s-ripple-dup;
+        }
+		html {
+			scroll-behavior: smooth;
+		}
+    </style>
+</head>
+<!-- Heading for the page -->
+<header><h1>ART ARCHIVE - Match-making Service</h1></header>
+<body style="height:2000px">
+<!-- Defining the Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav .nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="sales.html">Art Sales <i class="fas fa-comments-dollar"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <i class="fas fa-archway"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="userDirectory.html">Tutoring <i class="fas fa-chalkboard-teacher"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profilePage.html">Profile <i class="far fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="signin.html">Register <i class="fas fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us <i class="fas fa-address-book"></i></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="directories.html">Directories <i class="fas fa-book"></i></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h2 style = "padding: 40px; left: 80px;">Match-making Form</h2>
+<div style = "position:relative; border-radius:25px; padding: 20px; width:700px; height:150px; left:80px; top:0px; background-color:white;">
+		<h5> Please enter your name:</h5>
+		<input style = "position:sticky;" type="text" id="fname" name="fname" value="name"><br>
+	</div>
+<div style = "position:relative; border-radius:25px; padding: 20px; width:700px; height:400px; left:80px; top:50px; background-color:white;">
+	<h5> Please select the art platform that you would like to teach:</h5>
+	<form action="">
+		<div class="control-group">
+			<label class="control control-radio">
+				Digital Art
+				<input type="radio" name="radio" checked="checked"/>
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Photography
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Painting
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Realism
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Abstract Art
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Modern Art
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Anime/Manga
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Cultural Art
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-radio">
+				Embroidery
+				<input type="radio" name="radio" />
+				<div class="control_indicator"></div>
+			</label>
+		</div>
+	</form> 
+</div>
+	<!--<input type="submit" value="Submit">-->
+
+<div style = "position:relative; border-radius:25px; padding: 20px; width:700px; height:400px; left:80px; top:100px; background-color:white;">
+<h5> Please select the art platform that you would like to learn:</h5>
+<form action="">
+    <div class="control-group">
+        <label class="control control-radio">
+            Digital Art
+            <input type="radio" name="radio" checked="checked"/>
+            <div class="control_indicator"></div>
+        </label>
+        <label class="control control-radio">
+            Photography
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+        <label class="control control-radio">
+            Painting
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Realism
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Abstract Art
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Modern Art
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Anime/Manga
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Cultural Art
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+		<label class="control control-radio">
+            Embroidery
+            <input type="radio" name="radio" />
+            <div class="control_indicator"></div>
+        </label>
+    </div>
+	<input style = "position:relative; border-style: solid; border-color: black; border-width: thin medium; border-radius:25px; padding: 20px; right: 100px; top:80px; background-color:LightGray;" type="submit" value="Submit">
+</form> 
+</body>
+</html>
