@@ -1,3 +1,31 @@
+ <?php  
+    $host="localhost";
+    $port=3306;
+    $socket="";
+    $user="root";
+    $password="DetroitandNewYork#1104";
+    $dbname="artarchive";
+
+    $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+    or die ('Could not connect to the database server' . mysqli_connect_error());
+    $name = mysqli_real_escape_string($con, $_REQUEST['topic_author']);
+    $topic = mysqli_real_escape_string($con, $_REQUEST['topic_title']);
+    $question = mysqli_real_escape_string($con, $_REQUEST['topicquestion']);
+
+    $sql = "INSERT INTO questionboard (topic_author, topic_title, topicquestion) VALUES ('$name', '$topic', '$question')";
+    if ($con->query($sql) === TRUE) 
+    {
+        echo "New record created successfully"; 
+         header("Location:display.php");
+    }  
+  
+    if($con->query($sql)===FALSE)
+    {
+         echo "Error: " . $sql . "<br>" . $con->error;
+    }
+    $con->close();
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
