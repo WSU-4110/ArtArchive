@@ -4,7 +4,6 @@
 <title>AA - Login</title>
 <%@ include file="WEB-INF/head.html" %>
 <header><h1>ART ARCHIVE - Login</h1></header>
-
 <body>
 <%@ include file="WEB-INF/navbar.html" %>
 	<div class="container">

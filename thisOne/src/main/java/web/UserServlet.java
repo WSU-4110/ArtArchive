@@ -59,6 +59,9 @@ public class UserServlet extends HttpServlet {
 			case "/profile":
 				showProfile(request, response);
 				break;
+			case "/listUsers":
+				listUser(request, response);
+				break;
 			default:
 				listUser(request, response);
 				break;
