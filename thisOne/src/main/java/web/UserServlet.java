@@ -151,7 +151,7 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException {
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
-		String user = request.getParameter("user");
+		String user = (String)session.getAttribute("currentUser");
 		SalePost newSale = new SalePost(name, description, user);
 		salePostDAO.insertSale(newSale);
 		response.sendRedirect("listSales");
