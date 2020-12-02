@@ -132,7 +132,41 @@ text-align: center;
         <div class="col-sm-2 text-center">
         </div>
     </div>
-          </body> 
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-image">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">User</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="salePost" items="${listSalePost}">
+          <tr>
+            <td><c:out value="${salePost.id}" /></td>
+            <td><c:out value="${salePost.name}" /></td>
+            <td><c:out value="${salePost.description}" /></td>
+            <td><c:out value="${salePost.user}" /></td>
+            <td>
+              <a href="edit?id=<c:out value='${salePost.id}' />">Edit</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="delete?id=<c:out value='${salePost.id}' />">Buy</a>
+            </td>
+          </tr>
+        </c:forEach>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
 </html>
+
+
 
 
