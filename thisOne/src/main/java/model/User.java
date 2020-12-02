@@ -1,33 +1,30 @@
 package model;
 
-/**
- * User.java
- * This is a model class represents a User entity
- * @author Ramesh Fadatare
- *
- */
 public class User {
 	protected int id;
 	protected String name;
 	protected String email;
 	protected String country;
+	protected String password;
 	
 	public User() {
 	}
 	
-	public User(String name, String email, String country) {
+	public User(String name, String email, String country, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.country = country;
+		this.password = password;
 	}
 
-	public User(int id, String name, String email, String country) {
+	public User(int id, String name, String email, String country, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.country = country;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -53,5 +50,11 @@ public class User {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

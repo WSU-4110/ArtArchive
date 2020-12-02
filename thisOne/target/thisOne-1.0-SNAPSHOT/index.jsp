@@ -11,7 +11,7 @@
 	<h1>Login</h1>
 	</div>
     <div align="center" class="info">
-     	<form action="Login" method="post">
+     	<form action="userLogin" method="post">
         <table border="1" cellpadding="5">   
             <tr>
                 <th>Username:</th>

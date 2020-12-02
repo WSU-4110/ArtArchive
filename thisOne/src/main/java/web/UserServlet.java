@@ -10,24 +10,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
+import model.SalePost;
 import dao.UserDAO;
+import dao.SalePostDAO;
 
-/**
- * ControllerServlet.java
- * This servlet acts as a page controller for the application, handling all
- * requests from the user.
- * @email Ramesh Fadatare
- */
+
 
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDAO;
+	private SalePostDAO salePostDAO;
+	private HttpSession session = null;
 	
 	public void init() {
 		userDAO = new UserDAO();
+		salePostDAO = new SalePostDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +44,12 @@ public class UserServlet extends HttpServlet {
 			switch (action) {
 			case "/register":
 				showRegisterForm(request, response);
+				break;
+			case "/userLogin":
+				userLogin(request, response);
+				break;
+			case "/postSale":
+				postArtSale(request, response);
 				break;
 			case "/insert":
 				insertUser(request, response);
@@ -60,10 +67,13 @@ public class UserServlet extends HttpServlet {
 				showProfile(request, response);
 				break;
 			case "/listUsers":
-				listUser(request, response);
+				listUsers(request, response);
 				break;
+			case "/listSales":
+				listSales(request, response);
+					break;
 			default:
-				listUser(request, response);
+				listUsers(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -71,11 +81,43 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 
-	private void listUser(HttpServletRequest request, HttpServletResponse response)
+	private void listUsers(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<User> listUser = userDAO.selectAllUsers();
 		request.setAttribute("listUser", listUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("username");
+		String password = request.getParameter("password");
+		session = request.getSession();
+		session.setAttribute("currentUser", name);
+		session.setAttribute("currentPassword", password);
+
+		try {
+			userDAO.userExists(name, password);
+			//if(blackListDAO.isBanned(name))) {
+			//    throw new ErrorException("You have been banned");
+			//}
+		}
+		catch(SQLException e) {
+			if(e.getErrorCode() == 1045) {
+				e.printStackTrace();
+			}
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("listSales");
+		dispatcher.forward(request, response);
+		System.out.println(session.getAttribute("currentUser"));
+		System.out.println(session.getAttribute("currentPassword"));
+	}
+
+	private void listSales(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<SalePost> listSalePost = salePostDAO.selectAllSales();
+		request.setAttribute("listSalePost", listSalePost);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("sales.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -99,9 +141,20 @@ public class UserServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
-		User newUser = new User(name, email, country);
+		String password = request.getParameter("password");
+		User newUser = new User(name, email, country, password);
 		userDAO.insertUser(newUser);
-		response.sendRedirect("list");
+		response.sendRedirect("listUsers");
+	}
+
+	private void postArtSale(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		String name = request.getParameter("name");
+		String description = request.getParameter("description");
+		String user = request.getParameter("user");
+		SalePost newSale = new SalePost(name, description, user);
+		salePostDAO.insertSale(newSale);
+		response.sendRedirect("listSales");
 	}
 
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
@@ -110,17 +163,18 @@ public class UserServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
+		String password = request.getParameter("password");
 
-		User book = new User(id, name, email, country);
+		User book = new User(id, name, email, country, password);
 		userDAO.updateUser(book);
-		response.sendRedirect("list");
+		response.sendRedirect("listUsers");
 	}
 
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		userDAO.deleteUser(id);
-		response.sendRedirect("list");
+		response.sendRedirect("listUsers");
 	}
 
 	private void showProfile(HttpServletRequest request, HttpServletResponse response)
@@ -129,9 +183,10 @@ public class UserServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
+		String password = request.getParameter("password");
 
-		User book = new User(id, name, email, country);
+		User book = new User(id, name, email, country, password);
 		userDAO.updateUser(book);
-		response.sendRedirect("list");
+		response.sendRedirect("listUsers");
 	}
 }
