@@ -22,14 +22,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form  method = "post" action = "https://webdevbasics.net/scripts/javajam8.php">
+                        <form action="postDirectory" method="post">
                             <div class="form-group">
                                 <label>Title</label>
-                                <input type="text" class="form-control" id="title" name="titleArtwork" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'">
+                                <input type="text" name="title" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.title}' />"/>
                                 <small id="titleHelp" class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
                             </div>
                             <div class="form-group">
-                                <label>File Upload</label>
+                                <label>Description</label>
+                                <input type="text" name="description" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.description}' />"/>
+                                <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Link</label>
+                                <input type="text" name="link" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.link}' />"/>
+                                <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Piece Input</label>
                                 <input type="file" class="form-control-file" id="file" name="fileArtwork">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -139,23 +149,25 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">User</th>
+                    <th scope="col">Link</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="directory" items="${listDirectories}">
+                <c:forEach var="directory" items="${listDirectory}">
                     <tr>
                         <td><c:out value="${directory.id}" /></td>
-                        <td><c:out value="${directory.name}" /></td>
+                        <td><c:out value="${directory.title}" /></td>
                         <td><c:out value="${directory.description}" /></td>
                         <td><c:out value="${directory.user}" /></td>
+                        <td><c:out value="${directory.link}" /></td>
                         <td>
-                            <a href="edit?id=<c:out value='${directory.id}' />">Edit</a>
+                            <a href="edit?id=<c:out value='${directory.title}' />">Edit</a>
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="delete?id=<c:out value='${directory.id}' />">Buy</a>
+                            <a href="delete?id=<c:out value='${directory.title}' />">Buy</a>
                         </td>
                     </tr>
                 </c:forEach>
