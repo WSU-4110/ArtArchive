@@ -9,7 +9,7 @@
 	<center>
 		<h1>User Management</h1>
         <h2>
-        	<a href="new">Add New User</a>
+        	<a href="register">Add New User</a>
         	&nbsp;&nbsp;&nbsp;
         	<a href="list">List All Users</a>
         	
@@ -23,6 +23,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Country</th>
+                <th>Password</th>
                 <th>Actions</th>
             </tr>
             <c:forEach var="user" items="${listUser}">
@@ -31,14 +32,15 @@
                     <td><c:out value="${user.name}" /></td>
                     <td><c:out value="${user.email}" /></td>
                     <td><c:out value="${user.country}" /></td>
+                    <td><c:out value="${user.password}" /></td>
                     <td>
                     	<a href="edit?id=<c:out value='${user.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="delete?id=<c:out value='${user.id}' />">Delete</a>                    	
+                    	<a href="delete?id=<c:out value='${user.id}' />">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-    </div>	
+    </div>
 </body>
 </html>

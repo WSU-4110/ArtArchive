@@ -10,25 +10,18 @@ import java.util.List;
 
 import model.User;
 
-/**
- * AbstractDAO.java This DAO class provides CRUD database operations for the
- * table users in the database.
- * 
- * @author Ramesh Fadatare
- *
- */
 public class UserDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "password123";
 
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country) VALUES "
-			+ " (?, ?, ?);";
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password) VALUES "
+			+ " (?, ?, ?, ?);";
 
-	private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
+	private static final String SELECT_USER_BY_ID = "select id,name,email,country,password from users where id =?";
 	private static final String SELECT_ALL_USERS = "select * from users";
 	private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-	private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
+	private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =?, password =? where id = ?;";
 
 	public UserDAO() {
 	}
@@ -46,6 +39,23 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return connection;
+	}
+
+	public boolean userExists(String mysqlUser, String mysqlPassword) throws SQLException{
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection login = (Connection) DriverManager
+				.getConnection(this.jdbcURL, mysqlUser, mysqlPassword);
+
+		if(login == null) {
+			return false;
+		}
+		login.close();
+		return true;
 	}
 
 	public void insertUser(User user) throws SQLException {
@@ -79,7 +89,8 @@ public class UserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String country = rs.getString("country");
-				user = new User(id, name, email, country);
+				String password = rs.getString("password");
+				user = new User(id, name, email, country, password);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -106,7 +117,8 @@ public class UserDAO {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String country = rs.getString("country");
-				users.add(new User(id, name, email, country));
+				String password = rs.getString("password");
+				users.add(new User(id, name, email, country, password));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

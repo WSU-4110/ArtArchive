@@ -4,7 +4,6 @@
 <title>AA - Login</title>
 <%@ include file="WEB-INF/head.html" %>
 <header><h1>ART ARCHIVE - Login</h1></header>
-
 <body>
 <%@ include file="WEB-INF/navbar.html" %>
 	<div class="container">
@@ -12,7 +11,7 @@
 	<h1>Login</h1>
 	</div>
     <div align="center" class="info">
-     	<form action="Login" method="post">
+     	<form action="userLogin" method="post">
         <table border="1" cellpadding="5">   
             <tr>
                 <th>Username:</th>
