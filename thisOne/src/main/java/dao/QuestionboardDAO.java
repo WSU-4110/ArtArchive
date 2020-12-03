@@ -14,7 +14,7 @@ import model.Questionboard;
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "DetroitandNewYork#1104";
+    private String jdbcPassword = "AAadmin_0404";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
     private static final String SELECT_ALL_QUESTIONS = "SELECT * FROM questionboard";
     private static final String SELECT_SPECIFIC_QUESTION = "SELECT * FROM questionboard WHERE topic_id = ?";

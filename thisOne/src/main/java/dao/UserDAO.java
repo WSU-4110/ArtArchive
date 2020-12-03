@@ -13,7 +13,7 @@ import model.User;
 public class UserDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "password123";
+	private String jdbcPassword = "AAadmin_0404";
 
 	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password, firstName, lastName, description, favoriteColor) VALUES "
 			+ " (?, ?, ?, ?, ?, ?, ?, ?);";
@@ -66,11 +66,12 @@ public class UserDAO {
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getCountry());
-			preparedStatement.setString(4, user.getFirstName());
-			preparedStatement.setString(5, user.getLastName());
-			preparedStatement.setString(6, user.getDescription());
-			preparedStatement.setString(7, user.getFavoriteColor());
-			preparedStatement.setInt(8, user.getId());
+			preparedStatement.setString(4, user.getPassword());
+			preparedStatement.setString(5, user.getFirstName());
+			preparedStatement.setString(6, user.getLastName());
+			preparedStatement.setString(7, user.getDescription());
+			preparedStatement.setString(8, user.getFavoriteColor());
+			//preparedStatement.setInt(9, user.getId());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -78,7 +79,7 @@ public class UserDAO {
 		}
 	}
 
-	public User selectUser(String username) {
+	/*public selectUser(String username) {
 		User user = null;
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
@@ -101,6 +102,36 @@ public class UserDAO {
 				String description = rs.getString("description");
 				String favoriteColor = rs.getString("favoriteColor");
 				user = new User(id, name, email, country, password, firstName, lastName, description, favoriteColor);
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return user;
+	}*/
+	public List<User> selectUser(String username) {
+		//User user = null;
+		List<User> user = new ArrayList<>();
+		// Step 1: Establishing a Connection
+		try (Connection connection = getConnection();
+			 // Step 2:Create a statement using connection object
+			 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_NAME);) {
+			preparedStatement.setString(1, username);
+			System.out.println(preparedStatement);
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step 4: Process the ResultSet object.
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String country = rs.getString("country");
+				String password = rs.getString("password");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String description = rs.getString("description");
+				String favoriteColor = rs.getString("favoriteColor");
+				user.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
