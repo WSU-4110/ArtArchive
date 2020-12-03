@@ -137,7 +137,7 @@ public class UserServlet extends HttpServlet {
 	private void listDirectories(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Directory> listDirectory = directoryDAO.selectAllDirectories();
-		request.setAttribute("listDirectories", listDirectory);
+		request.setAttribute("listDirectory", listDirectory);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("directory.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -195,12 +195,13 @@ public class UserServlet extends HttpServlet {
 
 	private void postDirectory(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
-		String name = request.getParameter("name");
+		String title = request.getParameter("title");
 		String description = request.getParameter("description");
 		String user = (String)session.getAttribute("currentUser");
-		SalePost newSale = new SalePost(name, description, user);
-		salePostDAO.insertSale(newSale);
-		response.sendRedirect("listSales");
+		String link = request.getParameter("link");
+		Directory directory = new Directory(title, description, user, link);
+		directoryDAO.insertDirectory(directory);
+		response.sendRedirect("listDirectories");
 	}
 
 	private void updateUser(HttpServletRequest request, HttpServletResponse response) 

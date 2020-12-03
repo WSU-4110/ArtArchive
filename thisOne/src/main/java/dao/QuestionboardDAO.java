@@ -12,7 +12,7 @@ import java.util.List;
 import model.Questionboard;
 
 public class QuestionboardDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/artarchive";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
     private String jdbcPassword = "DetroitandNewYork#1104";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
@@ -234,7 +234,7 @@ public class QuestionboardDAO {
 
         boolean rowDeleted;
         try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM QUESTIONBOARD");
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM questionboard");
 
             try {
                 statement.setInt(1, topic_id);
@@ -278,7 +278,7 @@ public class QuestionboardDAO {
 
         boolean rowUpdated;
         try {
-            PreparedStatement statement = connection.prepareStatement("update QUESTIONBOARD set topic_author = ?,topic_title= ?, topic_question =? where topic_id = ?");
+            PreparedStatement statement = connection.prepareStatement("update questionboard set topic_author = ?,topic_title= ?, topic_question =? where topic_id = ?");
 
             try {
                 statement.setString(1, question.getTopic_author());

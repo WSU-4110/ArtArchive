@@ -1,5 +1,6 @@
 package model;
 
+<<<<<<< HEAD
 import java.util.Date;
 
 public class Questionboard {
@@ -87,5 +88,21 @@ public class Questionboard {
 
     public void setUtilDate(Date utilDate) {
         this.utilDate = utilDate;
+=======
+public class Questionboard {
+    public Questionboard(int topic_id, String topic_author, String topic_title, String topicquestion) {
+    }
+
+    public String getTopic_author() {
+    }
+
+    public String getTopic_title() {
+    }
+
+    public String getTopicquestion() {
+    }
+
+    public int getTopic_id() {
+>>>>>>> 54e00a4fe02ce23b900cd3297d82e0f38ac9305e
     }
 }

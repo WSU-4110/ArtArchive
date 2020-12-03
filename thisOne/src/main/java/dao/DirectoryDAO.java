@@ -2,7 +2,11 @@ package dao;
 
 import model.Directory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +49,7 @@ public class DirectoryDAO {
 			preparedStatement.setString(1, directory.getTitle());
 			preparedStatement.setString(2, directory.getDescription());
 			preparedStatement.setString(3, directory.getUser());
-			preparedStatement.setString(3, directory.getLink());
+			preparedStatement.setString(4, directory.getLink());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
