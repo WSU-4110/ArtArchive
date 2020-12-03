@@ -5,13 +5,14 @@
 <%@ include file="WEB-INF/head.html" %>
 <header><h1>ART ARCHIVE - Login</h1></header>
 <body>
+<%@ include file="WEB-INF/navbar.html" %>
 <div class="container">
     <div align="center" class="info">
 
     <h2>ABSTRACT ART</h2>
     <h3>Abstract art is art that does not attempt to represent an accurate depiction of a visual reality but instead use shapes, colours, forms and gestural marks to achieve its effectead use shapes, colours, forms and gestural marks to achieve its effect
     </h3>
-        <img src =markus-spiske-k0rVudBoB4c-unsplash.jpg">
+        <img src = "https://images.unsplash.com/photo-1593642633279-1796119d5482?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
         <p>Strictly speaking, the word abstract means to separate or withdraw something from something else.
 
             The term can be applied to art that is based an object, figure or landscape, where forms have been simplified or schematised.
@@ -27,7 +28,7 @@
     <h2>Discover Art </h2>
     <h3>Abstract art is art that does not attempt to represent an accurate depiction of a visual reality but instead use shapes, colours, forms and gestural marks to achieve its effectead use shapes, colours, forms and gestural marks to achieve its effect
     </h3>
-    <img src =birmingham-museums-trust-aDDV33MI_ow-unsplash.jpg">
+    <img src = "https://images.unsplash.com/photo-1604864708171-b6a408b4cba2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=676&q=80">
     <p>The terms modernism and modern art are generally used to describe the succession of art movements that critics and historians have identified since the realism of Gustav Courbet and culminating in abstract art and its developments in the 1960s.
 
         Although many different styles are encompassed by the term, there are certain underlying principles that define modernist art: A rejection of history and conservative values (such as realistic depiction of subjects); innovation and experimentation with form (the shapes, colours and lines that make up the work) with a tendency to abstraction; and an emphasis on materials, techniques and processes. Modernism has also been driven by various social and political agendas. These were often utopian, and modernism was in general associated with ideal visions of human life and society and a belief in progress.
@@ -41,7 +42,7 @@
 <h2>An Introduction to Lynette Yiadom-Boakye</h2>
 <h3>Learn about the lives of artists and the stories behind their work
 </h3>
-<img src =curioso-photography-OTd55EeZMT4-unsplash.jpg">
+<img src = "https://images.unsplash.com/photo-1606998768480-e27b7995b2be?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
 <p>Lynette Yiadom-Boakye was born in London in 1977. She initially learned to paint by working from life. But she changed her approach to painting at an early stage, while studying at Falmouth School of Art, on the Cornish coast. Yiadom-Boakye realised she was less interested in making portraits of people and more in the act of painting itself.</p>
 </div>
 </body>
