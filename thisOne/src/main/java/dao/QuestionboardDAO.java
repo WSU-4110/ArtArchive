@@ -98,7 +98,7 @@ public class QuestionboardDAO {
     }
 
     public void insertQuestions(Questionboard question) throws SQLException {
-        System.out.println("INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);");
+        System.out.println(INSERT_QUESTIONS_SQL);
 
         try {
             Connection connection = this.getConnection();
@@ -229,47 +229,13 @@ public class QuestionboardDAO {
         return questions;
     }
 
-    public boolean deletequestion(int topic_id) throws SQLException {
-        Connection connection = this.getConnection();
-
+    public boolean deletequestion(int id) throws SQLException {
         boolean rowDeleted;
-        try {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM questionboard");
-
-            try {
-                statement.setInt(1, topic_id);
-                rowDeleted = statement.executeUpdate() > 0;
-            } catch (Throwable var9) {
-                if (statement != null) {
-                    try {
-                        statement.close();
-                    } catch (Throwable var8) {
-                        var9.addSuppressed(var8);
-                    }
-                }
-
-                throw var9;
-            }
-
-            if (statement != null) {
-                statement.close();
-            }
-        } catch (Throwable var10) {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (Throwable var7) {
-                    var10.addSuppressed(var7);
-                }
-            }
-
-            throw var10;
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_QUESTIONS);) {
+            statement.setInt(1, id);
+            rowDeleted = statement.executeUpdate() > 0;
         }
-
-        if (connection != null) {
-            connection.close();
-        }
-
         return rowDeleted;
     }
 
@@ -278,7 +244,7 @@ public class QuestionboardDAO {
 
         boolean rowUpdated;
         try {
-            PreparedStatement statement = connection.prepareStatement("update questionboard set topic_author = ?,topic_title= ?, topic_question =? where topic_id = ?");
+            PreparedStatement statement = connection.prepareStatement("update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?");
 
             try {
                 statement.setString(1, question.getTopic_author());

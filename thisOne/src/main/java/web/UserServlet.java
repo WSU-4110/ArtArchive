@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DirectoryDAO;
+import dao.QuestionboardDAO;
 import model.Directory;
+import model.Questionboard;
 import model.User;
 import model.SalePost;
 import dao.UserDAO;
@@ -28,11 +30,13 @@ public class UserServlet extends HttpServlet {
 	private SalePostDAO salePostDAO;
 	private DirectoryDAO directoryDAO;
 	private HttpSession session = null;
+	private QuestionboardDAO questionDAO;
 	
 	public void init() {
 		userDAO = new UserDAO();
 		salePostDAO = new SalePostDAO();
 		directoryDAO = new DirectoryDAO();
+		questionDAO = new QuestionboardDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -85,6 +89,12 @@ public class UserServlet extends HttpServlet {
 			case "/questionboard":
 				showQuestionForm(request, response);
 				break;
+				case "/insertquestion":
+					insertquestion(request,response);
+					break;
+				case "/listquestions":
+					listquestions(request, response);
+					break;
 			default:
 				listUsers(request, response);
 				break;
@@ -99,6 +109,13 @@ public class UserServlet extends HttpServlet {
 		List<User> listUser = userDAO.selectAllUsers();
 		request.setAttribute("listUser", listUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		dispatcher.forward(request, response);
+	}
+	private void listquestions(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<Questionboard> listquestions = questionDAO.selectAllData();
+		request.setAttribute("listquestions", listquestions);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("questionboard.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -185,6 +202,15 @@ public class UserServlet extends HttpServlet {
 		User newUser = new User(name, email, country, password, firstName, lastName, description, favoriteColor);
 		userDAO.insertUser(newUser);
 		response.sendRedirect("listUsers");
+	}
+	private void insertquestion(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		String name = request.getParameter("topic_author");
+		String topic_title = request.getParameter("topic_title");
+		String topicquestion = request.getParameter("topicquestion");
+		Questionboard question = new Questionboard(name, topic_title,topicquestion);
+		questionDAO.insertQuestions(question);
+		response.sendRedirect("questionboard");
 	}
 
 	private void postArtSale(HttpServletRequest request, HttpServletResponse response)

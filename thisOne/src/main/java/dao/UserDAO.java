@@ -13,9 +13,10 @@ import model.User;
 public class UserDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "password123";
+	private String jdbcPassword = "DetroitandNewYork#1104";
 
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password, firstName, lastName, description, favoriteColor) VALUES "
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  " +
+			"(name, email, country, password, firstName, lastName, description, favoriteColor) VALUES "
 			+ " (?, ?, ?, ?, ?, ?, ?, ?);";
 
 	private static final String SELECT_USER_BY_ID = "select id,name,email,country,password,firstName,lastName,description,favoriteColor from users where id =?";
