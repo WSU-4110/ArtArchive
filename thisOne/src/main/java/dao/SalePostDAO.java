@@ -10,22 +10,18 @@ import java.util.List;
 
 import model.SalePost;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class SalePostDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "password123";
 
-	private static final String INSERT_SALES_SQL = "INSERT INTO salesBoard" + "  (name, description, user) VALUES "
-			+ " (?, ?, ?);";
+	private static final String INSERT_SALES_SQL = "INSERT INTO salesBoard" + "  (name, description, user, file) VALUES "
+			+ " (?, ?, ?, ?);";
 
-	private static final String SELECT_SALES_BY_ID = "select id,name,description,user from salesBoard where id =?";
+	private static final String SELECT_SALES_BY_ID = "select id, name, description, user, file from salesBoard where id =?";
 	private static final String SELECT_ALL_SALES = "select * from salesBoard";
 	private static final String DELETE_SALES_SQL = "delete from salesBoard where id = ?;";
-	private static final String UPDATE_SALES_SQL = "update salesBoard set name = ?, description= ?, user =? where id = ?;";
+	private static final String UPDATE_SALES_SQL = "update salesBoard set name = ?, description= ?, user =?, file =? where id = ?;";
 
 	public SalePostDAO() {
 	}
@@ -49,10 +45,11 @@ public class SalePostDAO {
 		System.out.println(INSERT_SALES_SQL);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SALES_SQL)) {
+			 PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SALES_SQL)) {
 			preparedStatement.setString(1, salePost.getName());
 			preparedStatement.setString(2, salePost.getDescription());
 			preparedStatement.setString(3, salePost.getUser());
+			preparedStatement.setString(4, salePost.getFile());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -71,7 +68,8 @@ public class SalePostDAO {
 				String name = rs.getString("name");
 				String description = rs.getString("description");
 				String user = rs.getString("user");
-				salePost = new SalePost(id, name, description, user);
+				String file = rs.getString("file");
+				salePost = new SalePost(id, name, description, user, file);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -82,7 +80,7 @@ public class SalePostDAO {
 	public List<SalePost> selectAllSales() {
 		List<SalePost> salePosts = new ArrayList<>();
 		try (Connection connection = getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SALES);) {
+			 PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SALES);) {
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
@@ -90,7 +88,8 @@ public class SalePostDAO {
 				String name = rs.getString("name");
 				String description = rs.getString("description");
 				String user = rs.getString("user");
-				salePosts.add(new SalePost(id, name, description, user));
+				String file = rs.getString("file");
+				salePosts.add(new SalePost(id, name, description, user, file));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -101,7 +100,7 @@ public class SalePostDAO {
 	public boolean deleteSale(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(DELETE_SALES_SQL);) {
+			 PreparedStatement statement = connection.prepareStatement(DELETE_SALES_SQL);) {
 			statement.setInt(1, id);
 			rowDeleted = statement.executeUpdate() > 0;
 		}
@@ -111,11 +110,12 @@ public class SalePostDAO {
 	public boolean updateSale(SalePost salePost) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_SALES_SQL);) {
+			 PreparedStatement statement = connection.prepareStatement(UPDATE_SALES_SQL);) {
 			statement.setString(1, salePost.getName());
 			statement.setString(2, salePost.getDescription());
 			statement.setString(3, salePost.getUser());
-			statement.setInt(4, salePost.getId());
+			statement.setString(4, salePost.getFile());
+			statement.setInt(5, salePost.getId());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}

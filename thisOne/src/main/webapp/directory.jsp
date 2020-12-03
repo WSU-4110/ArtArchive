@@ -111,7 +111,7 @@
                     </div>
                     <div class="card-body no-padding">
                         <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
+                            <div class="image"><img src="thisOne/src/webapp/images/av1.jpg" alt="..." class="img-rounded"></div>
                             <div class="text"><a href="#">
                                 <h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
                         </div>
