@@ -166,7 +166,7 @@ public class UserServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		User existingUser = userDAO.selectUser(id);
+		User existingUser = userDAO.selectUser((String)session.getAttribute("currentUser"));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("registerForm.jsp");
 		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);
