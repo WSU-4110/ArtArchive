@@ -141,31 +141,6 @@
         </div>
     </div>
 </div>
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Sales</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>User</th>
-            <th>Actions</th>
-        </tr>
-        <c:forEach var="salePost" items="${listSalePost}">
-            <tr>
-                <td><c:out value="${salePost.id}" /></td>
-                <td><c:out value="${salePost.name}" /></td>
-                <td><c:out value="${salePost.description}" /></td>
-                <td><c:out value="${salePost.user}" /></td>
-                <td>
-                    <a href="edit?id=<c:out value='${salePost.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="delete?id=<c:out value='${salePost.id}' />">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-12">

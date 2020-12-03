@@ -98,7 +98,7 @@ public class SalePostDAO {
 		return salePosts;
 	}
 
-	public boolean deleteUser(int id) throws SQLException {
+	public boolean deleteSale(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_SALES_SQL);) {
@@ -108,7 +108,7 @@ public class SalePostDAO {
 		return rowDeleted;
 	}
 
-	public boolean updateUser(SalePost salePost) throws SQLException {
+	public boolean updateSale(SalePost salePost) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_SALES_SQL);) {
