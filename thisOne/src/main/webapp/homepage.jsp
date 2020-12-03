@@ -1,48 +1,48 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<head>
-    <title>HomePage</title>
-</head>
+<title>AA - Login</title>
+<%@ include file="WEB-INF/head.html" %>
+<header><h1>ART ARCHIVE - Login</h1></header>
 <body>
-
-<div class="header-class">
+<div class="container">
+    <div align="center" class="info">
 
     <h2>ABSTRACT ART</h2>
-    <h5>Abstract art is art that does not attempt to represent an accurate depiction of a visual reality but instead use shapes, colours, forms and gestural marks to achieve its effect
-    </h5>
-        <img src ="https://www.freeimg.net/photo/1474365/liquid-gold-abstract-artwork">
+    <h3>Abstract art is art that does not attempt to represent an accurate depiction of a visual reality but instead use shapes, colours, forms and gestural marks to achieve its effectead use shapes, colours, forms and gestural marks to achieve its effect
+    </h3>
+        <img src =markus-spiske-k0rVudBoB4c-unsplash.jpg">
+        <p>Strictly speaking, the word abstract means to separate or withdraw something from something else.
+
+            The term can be applied to art that is based an object, figure or landscape, where forms have been simplified or schematised.
+
+            It is also applied to art that uses forms, such as geometric shapes or gestural marks, which have no source at all in an external visual reality. Some artists of this ‘pure’ abstraction have preferred terms such as concrete art or non-objective art, but in practice the word abstract is used across the board and the distinction between the two is not always obvious.
+
+            Abstract art is often seen as carrying a moral dimension, in that it can be seen to stand for virtues such as order, purity, simplicity and spirituality.
+
+            Since the early 1900s, abstract art has formed a central stream of modern art.</p>
 
 </div>
-<h3 class="post"> Art of the day</h3>
-    <div class="post">
-        <header>
-            <div><p style="float: left;"><img src="images/profile.png" width="50px" border="0px"></p>
-            </div>
-        </header>
-        <img src="https://depositphotos.com/329404636/stock-photo-gold-creative-abstract-art-painting.html" alt="Art" style="width:40%;">
-        <div class="header">
-            <h3>ABSTRACTION ACROSS A CENTURY</h3>
-        </div>
-        <form>
-            <label for="exampleMessage">Comment</label>
-            <br><textarea class="u-full-width" placeholder="What's on your mind?" id="exampleMessage"></textarea></br>
-            <input class="button-primary" type="submit" value="Post">
-        </form>
-    </div>
-    <footer class="footer-class">
 
+    <h2>Discover Art </h2>
+    <h3>Abstract art is art that does not attempt to represent an accurate depiction of a visual reality but instead use shapes, colours, forms and gestural marks to achieve its effectead use shapes, colours, forms and gestural marks to achieve its effect
+    </h3>
+    <img src =birmingham-museums-trust-aDDV33MI_ow-unsplash.jpg">
+    <p>The terms modernism and modern art are generally used to describe the succession of art movements that critics and historians have identified since the realism of Gustav Courbet and culminating in abstract art and its developments in the 1960s.
 
-        hr>
-        <h4>Ask your question here and we will reach back to you :</h4>
-        <form role="form">
-            <div class="form-group">
-                <textarea class="form-control" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-        <br><br>
-    </footer>
+        Although many different styles are encompassed by the term, there are certain underlying principles that define modernist art: A rejection of history and conservative values (such as realistic depiction of subjects); innovation and experimentation with form (the shapes, colours and lines that make up the work) with a tendency to abstraction; and an emphasis on materials, techniques and processes. Modernism has also been driven by various social and political agendas. These were often utopian, and modernism was in general associated with ideal visions of human life and society and a belief in progress.
 
+        By the 1960s modernism had become a dominant idea of art, and a particularly narrow theory of modernist painting had been formulated by the highly influential American critic Clement Greenberg. A reaction then took place which was quickly identified as postmodernism.
+
+    </p>
+
+</div>
+
+<h2>An Introduction to Lynette Yiadom-Boakye</h2>
+<h3>Learn about the lives of artists and the stories behind their work
+</h3>
+<img src =curioso-photography-OTd55EeZMT4-unsplash.jpg">
+<p>Lynette Yiadom-Boakye was born in London in 1977. She initially learned to paint by working from life. But she changed her approach to painting at an early stage, while studying at Falmouth School of Art, on the Cornish coast. Yiadom-Boakye realised she was less interested in making portraits of people and more in the act of painting itself.</p>
+</div>
 </body>
 </html>
