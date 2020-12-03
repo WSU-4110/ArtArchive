@@ -12,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import dao.DirectoryDAO;
+import dao.QuestionboardDAO;
 import model.Directory;
+import model.Questionboard;
 import model.User;
 import model.SalePost;
 import dao.UserDAO;
@@ -27,11 +29,13 @@ public class UserServlet extends HttpServlet {
 	private SalePostDAO salePostDAO;
 	private DirectoryDAO directoryDAO;
 	private HttpSession session = null;
+	private QuestionboardDAO questionDAO;
 	
 	public void init() {
 		userDAO = new UserDAO();
 		salePostDAO = new SalePostDAO();
 		directoryDAO = new DirectoryDAO();
+		questionDAO = new QuestionboardDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -84,6 +88,7 @@ public class UserServlet extends HttpServlet {
 			case "/questionboard":
 				showQuestionForm(request, response);
 				break;
+
 			case "/profile":
 				showProfile(request, response);
 				break;
@@ -99,6 +104,19 @@ public class UserServlet extends HttpServlet {
 			case "/contact":
 				showContact(request, response);
 				break;
+
+				case "/insertquestion":
+					insertquestion(request,response);
+					break;
+				case "/listquestions":
+					listquestions(request, response);
+					break;
+				case "/deletequestion":
+					deletequestion(request,response);
+					break;
+				case "/editquestion":
+					editQuestion(request,response);
+
 			default:
 				listUsers(request, response);
 				break;
@@ -113,6 +131,13 @@ public class UserServlet extends HttpServlet {
 		List<User> listUser = userDAO.selectAllUsers();
 		request.setAttribute("listUser", listUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+		dispatcher.forward(request, response);
+	}
+	private void listquestions(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<Questionboard> listquestions = questionDAO.selectAllData();
+		request.setAttribute("listquestions", listquestions);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("questionboard.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -200,6 +225,15 @@ public class UserServlet extends HttpServlet {
 		userDAO.insertUser(newUser);
 		response.sendRedirect("listUsers");
 	}
+	private void insertquestion(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		String name = request.getParameter("topic_author");
+		String topic_title = request.getParameter("topic_title");
+		String topicquestion = request.getParameter("topicquestion");
+		Questionboard question = new Questionboard(name, topic_title,topicquestion);
+		questionDAO.insertQuestions(question);
+		response.sendRedirect("questionboard");
+	}
 
 	private void postArtSale(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
@@ -238,12 +272,27 @@ public class UserServlet extends HttpServlet {
 		userDAO.updateUser(book);
 		response.sendRedirect("listUsers");
 	}
-
+	private void editQuestion(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		int topic_id = Integer.parseInt(request.getParameter("topic_id"));
+		String topic_author = request.getParameter("topic_author");
+		String topic_title = request.getParameter("topic_title");
+		String topicquestion = request.getParameter("topicquestion");
+		Questionboard question2 = new Questionboard(topic_id,topic_author,topic_title,topicquestion);
+		questionDAO.editquestion(question2);
+		response.sendRedirect("listquestions");
+	}
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		userDAO.deleteUser(id);
 		response.sendRedirect("listUsers");
+	}
+	private void deletequestion(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		questionDAO.deletequestion(id);
+		response.sendRedirect("listquestions");
 	}
 
 	private void showProfile(HttpServletRequest request, HttpServletResponse response)

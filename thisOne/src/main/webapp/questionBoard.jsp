@@ -21,16 +21,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method = "post" action = "questionboard.php">
+                    <c:if test="${question != null}">
+                    <form action="update" method="post">
+                        </c:if>
+                        <c:if test="${question == null}">
+                    <form method = "post" action = "insertquestion">
                         <div class="form-group">
+                            <caption>
                             <label> Name/Username: </label><br>
-                            <input type="text" name="topic_author" size=40 maxlength=150>
+                                <c:if test="${user != null}">
+                            <input type="text" name="topic_author" <c:out value="${question.topic_author}"/> size=40 maxlength=150>
+                                </c:if>
+                            </caption>
                             <label>Topic:</label><br>
                             <input type="text" name="topic_title" size=40 maxlength=150>
                             <left><label for="subject">Question:</label></left>
                             <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
                             <button type="submit" value = "Submit"  required = "required">Submit</button>
+                        </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
 </main>
 </html>
