@@ -27,11 +27,11 @@
         <div class="row my-4">
           <div class="col-md-8">
             <h2 class="font-weight-bold">Getting familiar with Procreate.</h2>
-            <p class="">Test tutorial post.</p>
+            <p class="">Procreate is a user friendly art generating app on IOS. It is very popular among digital artists and getting to know the platform is the first step to creating on Procreate.</p>
           </div>
           <div class="col-md-4 mt-3 pt-2">
             <div class="view z-depth-1">
-              <img src="images/ttDirectory/image2.png" alt="image2.png" class="img-fluid">
+              <!--<img src="images/ttDirectory/image2.png" alt="image2.png" class="img-fluid">-->
             </div>
           </div>
         </div>
@@ -47,11 +47,11 @@
         <div class="row my-4">
           <div class="col-md-8">
             <h2 class="font-weight-bold">Drawing a portrait.</h2>
-            <p class="">Test tutorial post.</p>
+            <p class="">It is best to break down a face into sections by starting with rough shapes. After you have the shapes you can go in and fill in the detail to bring your portrait to life.</p>
           </div>
           <div class="col-md-4 mt-3 pt-2">
             <div class="view z-depth-1">
-              <img src="images/ttDirectory/image1.png" alt="image1.png" class="img-fluid">
+              <!--<img src="images/ttDirectory/image1.png" alt="image1.png" class="img-fluid">-->
             </div>
           </div>
         </div>
@@ -71,11 +71,11 @@
         <div class="row my-4">
           <div class="col-md-8">
             <h2 class="font-weight-bold">Two-Thirds Rule</h2>
-            <p class="">Test tutorial post</p>
+            <p class="">If you're trying to take a landscape photo. It is most appealing to put your subject about two thirds of the way into the frame before taking your shot.</p>
           </div>
           <div class="col-md-4 mt-3 pt-2">
             <div class="view z-depth-1">
-              <img src="images/ttDirectory/photography0.jpg" alt="" class="img-fluid">
+              <!--<img src="images/ttDirectory/photography0.jpg" alt="" class="img-fluid">-->
             </div>
           </div>
         </div>
@@ -95,11 +95,11 @@
         <div class="row my-4">
           <div class="col-md-8">
             <h2 class="font-weight-bold">Choosing the right pencil.</h2>
-            <p class="">Test tutorial post.</p>
+            <p class="">Not all pencils are created equal. The look of graphite on paper is going to vary depending on the type of graphite in your pencil. An easy way to get started with different graphite is to buy a set of different graphite levels and play around with them.</p>
           </div>
           <div class="col-md-4 mt-3 pt-2">
             <div class="view z-depth-1">
-              <img src="images/ttDirectory/sketch0.jpg" alt="" class="img-fluid">
+              <!--<img src="images/ttDirectory/sketch0.jpg" alt="" class="img-fluid">-->
             </div>
           </div>
         </div>

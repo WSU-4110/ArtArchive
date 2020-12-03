@@ -65,9 +65,9 @@ public class UserServlet extends HttpServlet {
 			case "/delete":
 				deleteUser(request, response);
 				break;
-		//	case "/edit":
-				//showEditForm(request, response);
-		//		break;
+			case "/edit":
+			//	showEditForm(request, response);
+				break;
 			case "/update":
 				updateUser(request, response);
 				break;
@@ -112,6 +112,9 @@ public class UserServlet extends HttpServlet {
 				break;
 			case "/editquestion":
 				editQuestion(request,response);
+				break;
+			case "/showHome":
+				showHomePage(request,response);
 				break;
 			default:
 				listUsers(request, response);
@@ -331,6 +334,13 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException
 	{
 		RequestDispatcher dispatcher = request.getRequestDispatcher("contact.jsp");
+		dispatcher.forward(request,response);
+	}
+
+	private void showHomePage (HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
 		dispatcher.forward(request,response);
 	}
 }

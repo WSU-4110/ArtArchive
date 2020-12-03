@@ -59,7 +59,7 @@
                             <div class="shadow-none p-3 bg-light"><c:out value="${salePost.name}" /></div>
                         </div>
                         <div>
-                            <div class="shadow-none p-3 mb-5 bg-light"><c:out value="${salePost.price}" /></div>
+                            <div class="shadow-none p-3 mb-5 bg-light"><c:out value="${salePost.description}" /></div>
                         </div>
                     </div>
                 </div>
