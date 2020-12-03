@@ -1,16 +1,15 @@
 package web;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import dao.DirectoryDAO;
 import dao.QuestionboardDAO;
@@ -188,7 +187,7 @@ public class UserServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		User existingUser = userDAO.selectUser(id);
+		User existingUser = userDAO.selectUser((String)session.getAttribute("currentUser"));
 		RequestDispatcher dispatcher = request.getRequestDispatcher("registerForm.jsp");
 		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);
@@ -219,11 +218,12 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void postArtSale(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
 		String user = (String)session.getAttribute("currentUser");
-		SalePost newSale = new SalePost(name, description, user);
+		String file = request.getParameter("file");
+		SalePost newSale = new SalePost(name, description, user, file);
 		salePostDAO.insertSale(newSale);
 		response.sendRedirect("listSales");
 	}
