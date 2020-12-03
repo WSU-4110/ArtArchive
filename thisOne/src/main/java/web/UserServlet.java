@@ -214,7 +214,7 @@ public class UserServlet extends HttpServlet {
 		String file = request.getParameter("file");
 		User newUser = new User(name, email, country, password, firstName, lastName, description, favoriteColor, file);
 		userDAO.insertUser(newUser);
-		response.sendRedirect("listUsers");
+		response.sendRedirect("listSales");
 	}
 	private void insertquestion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
