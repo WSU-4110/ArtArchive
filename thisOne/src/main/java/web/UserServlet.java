@@ -78,7 +78,7 @@ public class UserServlet extends HttpServlet {
 				break;
 			case "/listSales":
 				listSales(request, response);
-					break;
+				break;
 			case "/listDirectories":
 				listDirectories(request, response);
 				break;
