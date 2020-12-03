@@ -29,7 +29,7 @@ border-radius: 25px;
             <c:forEach var="user" items="${listProfileUser}">
                 <h5 class="card-title"> <c:out value="${user.firstName}" /> <c:out value="${user.lastName}" /> </h5>
             </c:forEach>
-            <a href="edit" class="card-link">Edit</a>
+            <!--<a href="edit" class="card-link">Edit</a>-->
             <c:forEach var="user" items="${listProfileUser}">
                     <p class="card-text"><c:out value="${user.description}" /></p>
             </c:forEach>
