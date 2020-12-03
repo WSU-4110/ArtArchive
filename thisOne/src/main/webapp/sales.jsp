@@ -38,8 +38,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Piece Input</label>
-                                <input type="file" class="form-control-file" id="file" name="fileArtwork">
+                                <label>Piece URL</label>
                                 <input type="text" name="file" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${salePost.file}' />"/>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -55,12 +54,12 @@
             <c:forEach var="salePost" items="${listSalePost}">
                 <div class="col-lg-2 col-md-3 col-xs-4 ">
                     <div class="box">
-                        <img src="<c:out value="${salePost.file}" />">
+                        <iframe src="<c:out value="${salePost.file}" />"></iframe>
                         <div>
                             <div class="shadow-none p-3 bg-light"><c:out value="${salePost.name}" /></div>
                         </div>
                         <div>
-                            <div class="shadow-none p-3 mb-5 bg-light"><c:out value="${salePost.user}" /></div>
+                            <div class="shadow-none p-3 mb-5 bg-light"><c:out value="${salePost.price}" /></div>
                         </div>
                     </div>
                 </div>

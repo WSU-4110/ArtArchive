@@ -1,8 +1,6 @@
 package web;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -139,28 +137,22 @@ public class UserServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
 		session = request.getSession();
 		session.setAttribute("currentUser", name);
 		session.setAttribute("currentPassword", password);
-
-		try {
-			userDAO.userExists(name, password);
-			//if(blackListDAO.isBanned(name))) {
-			//    throw new ErrorException("You have been banned");
-			//}
+		List<User> listProfileUser = userDAO.selectUser(name);
+		if (listProfileUser.isEmpty()){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("register");
+			dispatcher.forward(request, response);
 		}
-		catch(SQLException e) {
-			if(e.getErrorCode() == 1045) {
-				e.printStackTrace();
-			}
+		else
+		{
+			RequestDispatcher dispatcher = request.getRequestDispatcher("listSales");
+			dispatcher.forward(request, response);
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("listSales");
-		dispatcher.forward(request, response);
-		System.out.println(session.getAttribute("currentUser"));
-		System.out.println(session.getAttribute("currentPassword"));
 	}
 
 	private void listSales(HttpServletRequest request, HttpServletResponse response)

@@ -22,7 +22,9 @@ border-radius: 25px;
 <div class="one">
 <div class="card">
     <img class="card-img-top">
-    <iframe>src=<c:forEach var="user" items="${listProfileUser}"><c:out value="${user.file}"/> </c:forEach>; alt="Card image cap"></iframe>
+    <c:forEach var="user" items="${listProfileUser}">
+        <iframe src="<c:out value="${user.file}" />"></iframe>
+    </c:forEach>
     <div class="card-body">
             <c:forEach var="user" items="${listProfileUser}">
                 <h5 class="card-title"> <c:out value="${user.firstName}" /> <c:out value="${user.lastName}" /> </h5>

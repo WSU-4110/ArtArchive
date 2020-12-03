@@ -7,7 +7,6 @@
 	<title>User Management Application</title>
 </head>
 <body>
-<%@ include file="WEB-INF/navbar.html" %>
 	<center>
 		<h1>User Management</h1>
         <h2>

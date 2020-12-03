@@ -14,10 +14,10 @@ import model.Questionboard;
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "AAadmin_0404";
-    private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topic_question) VALUES  (?, ?, ?);";
+    private String jdbcPassword = "password123";
+    private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
     private static final String DELETE_QUESTIONS = "DELETE FROM QUESTIONBOARD";
-    private static final String UPDATE_QUESTIONS = "update QUESTIONBOARD set topic_author = ?,topic_title= ?, topic_question =? where topic_id = ?";
+    private static final String UPDATE_QUESTIONS = "update QUESTIONBOARD set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";
 
     public QuestionboardDAO() {
     }

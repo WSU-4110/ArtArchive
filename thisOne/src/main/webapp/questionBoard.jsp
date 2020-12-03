@@ -22,9 +22,9 @@
                 </div>
                 <div class="modal-body">
                     <c:if test="${question != null}">
-                    <form action="update" method="post">
-                        </c:if>
-                        <c:if test="${question == null}">
+                        <form action="update" method="post">
+                    </c:if>
+                    <c:if test="${question == null}">
                     <form method = "post" action = "insertquestion">
                         <div class="form-group">
                             <caption>
@@ -40,6 +40,7 @@
                             <button type="submit" value = "Submit"  required = "required">Submit</button>
                         </div>
                     </form>
+                    </c:if>
                 </div>
             </div>
         </div>

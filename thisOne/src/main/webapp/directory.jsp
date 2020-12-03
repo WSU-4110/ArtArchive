@@ -38,10 +38,6 @@
                                 <input type="text" name="link" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.link}' />"/>
                                 <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
                             </div>
-                            <div class="form-group">
-                                <label>Piece Input</label>
-                                <input type="file" class="form-control-file" id="file" name="fileArtwork">
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
@@ -54,87 +50,16 @@
         <div class="row">
             <div class="col-lg">
                 <div class="articles card">
-                    <div class="card-close">
-                        <div class="dropdown">
-                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                        </div>
-                    </div>
                     <div class="card-header d-flex align-items-center">
-                        <h2 class="h3">Latest</h2>
+                        <h2 class="h3">Latest Articles</h2>
                     </div>
                     <div class="card-body no-padding">
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av1.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="docs/clay.docx" download>
-                                <h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="docs/sculpt.docx" download>
-                                <h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="docs/howto1.docx" download>
-                                <h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="docs/howto2.docx" download>
-                                <h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="docs/ash.docx" download>
-                                <h3 class="h5">How to make an ashtray from bread</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="content">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg">
-                <div class="articles card">
-                    <div class="card-close">
-                        <div class="dropdown">
-                            <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                        </div>
-                    </div>
-                    <div class="card-header d-flex align-items-center">
-                        <h2 class="h3">Popular</h2>
-                    </div>
-                    <div class="card-body no-padding">
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="thisOne/src/webapp/images/av1.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="#">
-                                <h3 class="h5">Claymation Tips and Tricks</h3></a><small>Posted on 5th June 2017 by Aria Smith.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av2.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="#">
-                                <h3 class="h5">Sculpting Fundamentals</h3></a><small>Posted on 5th June 2017 by Frank Williams.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av3.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="#">
-                                <h3 class="h5">Tradition vs Modern Oil Pastel</h3></a><small>Posted on 5th June 2017 by Ashley Wood.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av4.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="#">
-                                <h3 class="h5">How to reuse brushes</h3></a><small>Posted on 5th June 2017 by Jason Doe.   </small></div>
-                        </div>
-                        <div class="item d-flex align-items-center">
-                            <div class="image"><img src="images/av5.jpg" alt="..." class="img-rounded"></div>
-                            <div class="text"><a href="#">
-                                <h3 class="h5">How to make an ashtray from bread</h3></a><small>Posted on 5th June 2017 by Sam Martinez.   </small></div>
-                        </div>
+                        <c:forEach var="directory" items="${listDirectory}">
+                            <div class="item d-flex align-items-center">
+                                <div class="text"><a href="<c:out value="${directory.link}" />">
+                                    <h3 class="h5"><c:out value="${directory.title}" /></h3></a><small>Posted by <c:out value="${directory.user}" />   </small></div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -142,38 +67,4 @@
     </div>
 </div>
 </body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-image">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="directory" items="${listDirectory}">
-                    <tr>
-                        <td><c:out value="${directory.id}" /></td>
-                        <td><c:out value="${directory.title}" /></td>
-                        <td><c:out value="${directory.description}" /></td>
-                        <td><c:out value="${directory.user}" /></td>
-                        <td><c:out value="${directory.link}" /></td>
-                        <td>
-                            <a href="edit?id=<c:out value='${directory.title}' />">Edit</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="delete?id=<c:out value='${directory.title}' />">Buy</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 </html>

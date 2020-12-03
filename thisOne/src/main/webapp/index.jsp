@@ -5,14 +5,10 @@
 <%@ include file="WEB-INF/head.html" %>
 <header><h1>ART ARCHIVE - Login</h1></header>
 <body>
-<%@ include file="WEB-INF/navbar.html" %>
 	<div class="container">
-	<div class="head">
-	<h1>Login</h1>
-	</div>
     <div align="center" class="info">
      	<form action="userLogin" method="post">
-        <table border="1" cellpadding="5">   
+        <table border="1" cellpadding="5">
             <tr>
                 <th>Username:</th>
                 <td>
