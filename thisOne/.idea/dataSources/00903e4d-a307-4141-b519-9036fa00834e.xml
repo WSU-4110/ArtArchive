@@ -974,7 +974,7 @@ SELECT|sys.sys_config:null
       <Position>3</Position>
       <DataType>varchar(150)|0s</DataType>
     </column>
-    <column id="304" parent="288" name="topicquestion">
+    <column id="304" parent="288" name="topic_question">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
@@ -1003,45 +1003,53 @@ SELECT|sys.sys_config:null
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="311" parent="290" name="id">
+    <column id="311" parent="289" name="file">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <column id="312" parent="290" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="312" parent="290" name="name">
+    <column id="313" parent="290" name="name">
       <Position>2</Position>
       <DataType>varchar(120)|0s</DataType>
     </column>
-    <column id="313" parent="290" name="email">
+    <column id="314" parent="290" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="314" parent="290" name="country">
+    <column id="315" parent="290" name="country">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="315" parent="290" name="password">
+    <column id="316" parent="290" name="password">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="316" parent="290" name="firstName">
+    <column id="317" parent="290" name="firstName">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="317" parent="290" name="lastName">
+    <column id="318" parent="290" name="lastName">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="318" parent="290" name="description">
+    <column id="319" parent="290" name="description">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="319" parent="290" name="favoriteColor">
+    <column id="320" parent="290" name="favoriteColor">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="320" parent="290" name="PRIMARY">
+    <column id="321" parent="290" name="file">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="322" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

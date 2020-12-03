@@ -88,7 +88,6 @@ public class UserServlet extends HttpServlet {
 			case "/questionboard":
 				showQuestionForm(request, response);
 				break;
-
 			case "/profile":
 				showProfile(request, response);
 				break;
@@ -104,19 +103,18 @@ public class UserServlet extends HttpServlet {
 			case "/contact":
 				showContact(request, response);
 				break;
-
-				case "/insertquestion":
-					insertquestion(request,response);
-					break;
-				case "/listquestions":
-					listquestions(request, response);
-					break;
-				case "/deletequestion":
-					deletequestion(request,response);
-					break;
-				case "/editquestion":
-					editQuestion(request,response);
-
+			case "/insertquestion":
+				insertquestion(request,response);
+				break;
+			case "/listquestions":
+				listquestions(request, response);
+				break;
+			case "/deletequestion":
+				deletequestion(request,response);
+				break;
+			case "/editquestion":
+				editQuestion(request,response);
+				break;
 			default:
 				listUsers(request, response);
 				break;
@@ -221,7 +219,8 @@ public class UserServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		String description = request.getParameter("description");
 		String favoriteColor = request.getParameter("favoriteColor");
-		User newUser = new User(name, email, country, password, firstName, lastName, description, favoriteColor);
+		String file = request.getParameter("file");
+		User newUser = new User(name, email, country, password, firstName, lastName, description, favoriteColor, file);
 		userDAO.insertUser(newUser);
 		response.sendRedirect("listUsers");
 	}
@@ -268,7 +267,8 @@ public class UserServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		String description = request.getParameter("description");
 		String favoriteColor = request.getParameter("favoriteColor");
-		User book = new User(id, name, email, country, password, firstName, lastName, description, favoriteColor);
+		String file = request.getParameter("file");
+		User book = new User(id, name, email, country, password, firstName, lastName, description, favoriteColor, file);
 		userDAO.updateUser(book);
 		response.sendRedirect("listUsers");
 	}

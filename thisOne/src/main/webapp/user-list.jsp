@@ -28,6 +28,7 @@
                 <th>LastName</th>
                 <th>Description</th>
                 <th>FavoriteColor</th>
+                <th>File</th>
             </tr>
             <c:forEach var="user" items="${listUser}">
                 <tr>
@@ -40,6 +41,7 @@
                     <td><c:out value="${user.lastName}" /></td>
                     <td><c:out value="${user.description}" /></td>
                     <td><c:out value="${user.favoriteColor}" /></td>
+                    <td><c:out value="${user.file}" /></td>
                     <td>
                     	<a href="edit?id=<c:out value='${user.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;

@@ -102,6 +102,14 @@
 					/>
 				</td>
 			</tr>
+			<tr>
+				<th>Profile Picture: </th>
+				<td>
+					<input type="text" name="file" size="15"
+						   value="<c:out value='${user.file}' />"
+					/>
+				</td>
+			</tr>
             <tr>
             	<td colspan="2" align="center">
             		<input type="submit" value="Save" />

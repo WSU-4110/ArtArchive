@@ -10,11 +10,12 @@ public class User {
 	protected String lastName;
 	protected String description;
 	protected String favoriteColor;
+	protected String file;
 	
 	public User() {
 	}
 	
-	public User(String name, String email, String country, String password, String firstName, String lastName, String description, String favoriteColor) {
+	public User(String name, String email, String country, String password, String firstName, String lastName, String description, String favoriteColor, String file) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -24,9 +25,10 @@ public class User {
 		this.lastName = lastName;
 		this.description = description;
 		this.favoriteColor = favoriteColor;
+		this.file = file;
 	}
 
-	public User(int id, String name, String email, String country, String password, String firstName, String lastName, String description, String favoriteColor) {
+	public User(int id, String name, String email, String country, String password, String firstName, String lastName, String description, String favoriteColor, String file) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -37,6 +39,7 @@ public class User {
 		this.lastName = lastName;
 		this.description = description;
 		this.favoriteColor = favoriteColor;
+		this.file = file;
 	}
 
 	public int getId() {
@@ -77,5 +80,7 @@ public class User {
 	public void setDescription(String description) { this.description = description; }
 	public String getFavoriteColor() { return favoriteColor; }
 	public void setFavoriteColor(String favoriteColor) { this.favoriteColor = favoriteColor; }
+	public String getFile() { return file; }
+	public void setFile(String file) { this.file = file; }
 
 }

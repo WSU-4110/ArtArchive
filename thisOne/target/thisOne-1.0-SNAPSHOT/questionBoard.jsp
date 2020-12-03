@@ -27,8 +27,12 @@
                         <c:if test="${question == null}">
                     <form method = "post" action = "insertquestion">
                         <div class="form-group">
+                            <caption>
                             <label> Name/Username: </label><br>
-                            <input type="text" name="topic_author" size=40 maxlength=150>
+                                <c:if test="${user != null}">
+                            <input type="text" name="topic_author" <c:out value="${question.topic_author}"/> size=40 maxlength=150>
+                                </c:if>
+                            </caption>
                             <label>Topic:</label><br>
                             <input type="text" name="topic_title" size=40 maxlength=150>
                             <left><label for="subject">Question:</label></left>

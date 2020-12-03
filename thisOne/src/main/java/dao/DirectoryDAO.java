@@ -13,7 +13,7 @@ import java.util.List;
 public class DirectoryDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "DetroitandNewYork#1104";
+	private String jdbcPassword = "AAadmin_0404";
 
 	private static final String INSERT_DIRECTORY_SQL = "INSERT INTO directory" + "  (title, description, user, link) VALUES "
 			+ " (?, ?, ?, ?);";

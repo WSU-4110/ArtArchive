@@ -15,10 +15,10 @@ public class UserDAO {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "AAadmin_0404";
 
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password, firstName, lastName, description, favoriteColor) VALUES "
-			+ " (?, ?, ?, ?, ?, ?, ?, ?);";
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password, firstName, lastName, description, favoriteColor, file) VALUES "
+			+ " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-	private static final String SELECT_USER_BY_NAME = "select id,name,email,country,password,firstName,lastName,description,favoriteColor from users where name =?";
+	private static final String SELECT_USER_BY_NAME = "select id,name,email,country,password,firstName,lastName,description,favoriteColor,file from users where name =?";
 	private static final String SELECT_ALL_USERS = "select * from users";
 	private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
 	private static final String UPDATE_USERS_SQL = "update users set name =?,email=?,country =?,password =?,firstName =?,lastName =?,description=?,favoriteColor=? where id = ?;";
@@ -71,6 +71,7 @@ public class UserDAO {
 			preparedStatement.setString(6, user.getLastName());
 			preparedStatement.setString(7, user.getDescription());
 			preparedStatement.setString(8, user.getFavoriteColor());
+			preparedStatement.setString(9, user.getFile());
 			//preparedStatement.setInt(9, user.getId());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
@@ -131,7 +132,8 @@ public class UserDAO {
 				String lastName = rs.getString("lastName");
 				String description = rs.getString("description");
 				String favoriteColor = rs.getString("favoriteColor");
-				user.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor));
+				String file = rs.getString("file");
+				user.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor, file));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -163,7 +165,8 @@ public class UserDAO {
 				String lastName = rs.getString("lastName");
 				String description = rs.getString("description");
 				String favoriteColor = rs.getString("favoriteColor");
-				users.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor));
+				String file = rs.getString("file");
+				users.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor,file));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -192,7 +195,8 @@ public class UserDAO {
 			statement.setString(5, user.getLastName());
 			statement.setString(6, user.getDescription());
 			statement.setString(7, user.getFavoriteColor());
-			statement.setInt(8, user.getId());
+			statement.setString(8, user.getFile());
+			//statement.setInt(8, user.getId());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}

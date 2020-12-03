@@ -40,6 +40,7 @@
                             <div class="form-group">
                                 <label>Piece Input</label>
                                 <input type="file" class="form-control-file" id="file" name="fileArtwork">
+                                <input type="text" name="file" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${salePost.file}' />"/>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -51,125 +52,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y4b6byep">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">The Snail</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$14.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y45dq4so">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Hallowed Red</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$89.95</div>
+            <c:forEach var="salePost" items="${listSalePost}">
+                <div class="col-lg-2 col-md-3 col-xs-4 ">
+                    <div class="box">
+                        <img src="<c:out value="${salePost.file}" />">
+                        <div>
+                            <div class="shadow-none p-3 bg-light"><c:out value="${salePost.name}" /></div>
+                        </div>
+                        <div>
+                            <div class="shadow-none p-3 mb-5 bg-light"><c:out value="${salePost.user}" /></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y3hdsj2m">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Self Portrait</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y5mlca3v">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Success</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$99.99</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y3243mrb">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Pattern in Yellow</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$612.05</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/yxekvz4h">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Heirs</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
-                    </div>
-                </div>
-            </div>			<div class="col-lg-2 col-md-3 col-xs-4 ">
-            <div class="box">
-                <img src="https://tinyurl.com/y6sqrghg">
-                <div>
-                    <div class="shadow-none p-3 bg-light">The Deeds to be</div>
-                </div>
-                <div>
-                    <div class="shadow-none p-3 mb-5 bg-light">$59.99</div>
-                </div>
-            </div>
-        </div>
-            <div class="col-lg-2 col-md-3 col-xs-4 ">
-                <div class="box">
-                    <img src="https://tinyurl.com/y4jeglzc">
-                    <div>
-                        <div class="shadow-none p-3 bg-light">Wartime</div>
-                    </div>
-                    <div>
-                        <div class="shadow-none p-3 mb-5 bg-light">$79.99</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-image">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="salePost" items="${listSalePost}">
-                    <tr>
-                        <td><c:out value="${salePost.id}" /></td>
-                        <td><c:out value="${salePost.name}" /></td>
-                        <td><c:out value="${salePost.description}" /></td>
-                        <td><c:out value="${salePost.user}" /></td>
-                        <td>
-                            <a href="edit?id=<c:out value='${salePost.id}' />">Edit</a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="delete?id=<c:out value='${salePost.id}' />">Buy</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            </c:forEach>
         </div>
     </div>
 </div>
