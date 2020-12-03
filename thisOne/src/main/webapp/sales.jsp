@@ -40,6 +40,7 @@
                             <div class="form-group">
                                 <label>Piece Input</label>
                                 <input type="file" class="form-control-file" id="file" name="fileArtwork">
+                                <input type="text" name="file" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${salePost.file}' />"/>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -54,7 +55,7 @@
             <c:forEach var="salePost" items="${listSalePost}">
                 <div class="col-lg-2 col-md-3 col-xs-4 ">
                     <div class="box">
-                        <img src="https://tinyurl.com/y4b6byep">
+                        <img src="<c:out value="${salePost.file}" />">
                         <div>
                             <div class="shadow-none p-3 bg-light"><c:out value="${salePost.name}" /></div>
                         </div>
