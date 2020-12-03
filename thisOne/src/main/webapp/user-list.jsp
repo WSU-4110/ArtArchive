@@ -24,7 +24,10 @@
                 <th>Email</th>
                 <th>Country</th>
                 <th>Password</th>
-                <th>Actions</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Description</th>
+                <th>FavoriteColor</th>
             </tr>
             <c:forEach var="user" items="${listUser}">
                 <tr>
@@ -33,6 +36,10 @@
                     <td><c:out value="${user.email}" /></td>
                     <td><c:out value="${user.country}" /></td>
                     <td><c:out value="${user.password}" /></td>
+                    <td><c:out value="${user.firstName}" /></td>
+                    <td><c:out value="${user.lastName}" /></td>
+                    <td><c:out value="${user.description}" /></td>
+                    <td><c:out value="${user.favoriteColor}" /></td>
                     <td>
                     	<a href="edit?id=<c:out value='${user.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;

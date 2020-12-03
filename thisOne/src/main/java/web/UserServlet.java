@@ -142,7 +142,11 @@ public class UserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
 		String password = request.getParameter("password");
-		User newUser = new User(name, email, country, password);
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String description = request.getParameter("description");
+		String favoriteColor = request.getParameter("favoriteColor");
+		User newUser = new User(name, email, country, password, firstName, lastName, description, favoriteColor);
 		userDAO.insertUser(newUser);
 		response.sendRedirect("listUsers");
 	}
@@ -164,8 +168,11 @@ public class UserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
 		String password = request.getParameter("password");
-
-		User book = new User(id, name, email, country, password);
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String description = request.getParameter("description");
+		String favoriteColor = request.getParameter("favoriteColor");
+		User book = new User(id, name, email, country, password, firstName, lastName, description, favoriteColor);
 		userDAO.updateUser(book);
 		response.sendRedirect("listUsers");
 	}
@@ -178,15 +185,10 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void showProfile(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String country = request.getParameter("country");
-		String password = request.getParameter("password");
+			throws SQLException, IOException, ServletException {
+		String name = (String)session.getAttribute("currentUser");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("profilepage.jsp");
 
-		User book = new User(id, name, email, country, password);
-		userDAO.updateUser(book);
-		response.sendRedirect("listUsers");
+		dispatcher.forward(request, response);
 	}
 }

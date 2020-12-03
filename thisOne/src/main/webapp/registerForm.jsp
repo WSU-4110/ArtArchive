@@ -62,6 +62,46 @@
                 	/>
                 </td>
             </tr>
+			<tr>
+				<th>Password: </th>
+				<td>
+					<input type="text" name="password" size="15"
+						   value="<c:out value='${user.password}' />"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th>First Name: </th>
+				<td>
+					<input type="text" name="firstName" size="15"
+						   value="<c:out value='${user.firstName}' />"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th>Last Name: </th>
+				<td>
+					<input type="text" name="lastName" size="15"
+						   value="<c:out value='${user.lastName}' />"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th>Description: </th>
+				<td>
+					<input type="text" name="description" size="15"
+						   value="<c:out value='${user.description}' />"
+					/>
+				</td>
+			</tr>
+			<tr>
+				<th>Favorite Color: </th>
+				<td>
+					<input type="text" name="favoriteColor" size="15"
+						   value="<c:out value='${user.favoriteColor}' />"
+					/>
+				</td>
+			</tr>
             <tr>
             	<td colspan="2" align="center">
             		<input type="submit" value="Save" />
