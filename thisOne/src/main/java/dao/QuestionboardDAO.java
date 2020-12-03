@@ -16,8 +16,6 @@ public class QuestionboardDAO {
     private String jdbcUsername = "root";
     private String jdbcPassword = "DetroitandNewYork#1104";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
-    private static final String SELECT_ALL_QUESTIONS = "SELECT * FROM questionboard";
-    private static final String SELECT_SPECIFIC_QUESTION = "SELECT * FROM questionboard WHERE topic_id = ?";
     private static final String DELETE_QUESTIONS = "DELETE FROM QUESTIONBOARD";
     private static final String UPDATE_QUESTIONS = "update QUESTIONBOARD set topic_author = ?,topic_title= ?, topic_question =? where topic_id = ?";
 
@@ -104,7 +102,7 @@ public class QuestionboardDAO {
             Connection connection = this.getConnection();
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);");
+                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUESTIONS_SQL);
 
                 try {
                     preparedStatement.setString(1, question.getTopic_author());
@@ -244,7 +242,7 @@ public class QuestionboardDAO {
 
         boolean rowUpdated;
         try {
-            PreparedStatement statement = connection.prepareStatement("update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?");
+            PreparedStatement statement = connection.prepareStatement(UPDATE_QUESTIONS);
 
             try {
                 statement.setString(1, question.getTopic_author());
