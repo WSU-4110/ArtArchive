@@ -1,5 +1,7 @@
 package dao;
 
+import model.Directory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,26 +10,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.SalePost;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-public class SalePostDAO {
+public class DirectoryDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "password123";
 
-	private static final String INSERT_SALES_SQL = "INSERT INTO salesBoard" + "  (name, description, user) VALUES "
-			+ " (?, ?, ?);";
+	private static final String INSERT_DIRECTORY_SQL = "INSERT INTO directory" + "  (title, description, user, link) VALUES "
+			+ " (?, ?, ?, ?);";
 
-	private static final String SELECT_SALES_BY_ID = "select id,name,description,user from salesBoard where id =?";
-	private static final String SELECT_ALL_SALES = "select * from salesBoard";
-	private static final String DELETE_SALES_SQL = "delete from salesBoard where id = ?;";
-	private static final String UPDATE_SALES_SQL = "update salesBoard set name = ?, description= ?, user =? where id = ?;";
+	private static final String SELECT_DIRECTORIES_BY_ID = "select id,title,description,user,link from directory where id =?";
+	private static final String SELECT_ALL_DIRECTORIES = "select * from directory";
+	private static final String DELETE_DIRECTORIES_SQL = "delete from directory where id = ?;";
+	private static final String UPDATE_DIRECTORY_SQL = "update directory set title = ?, description= ?, user =?, link=? where id = ?;";
 
-	public SalePostDAO() {
+	public DirectoryDAO() {
 	}
 
 	protected Connection getConnection() {
@@ -45,14 +41,15 @@ public class SalePostDAO {
 		return connection;
 	}
 
-	public void insertSale(SalePost salePost) throws SQLException {
-		System.out.println(INSERT_SALES_SQL);
+	public void insertDirectory(Directory directory) throws SQLException {
+		System.out.println(INSERT_DIRECTORY_SQL);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SALES_SQL)) {
-			preparedStatement.setString(1, salePost.getName());
-			preparedStatement.setString(2, salePost.getDescription());
-			preparedStatement.setString(3, salePost.getUser());
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_DIRECTORY_SQL)) {
+			preparedStatement.setString(1, directory.getTitle());
+			preparedStatement.setString(2, directory.getDescription());
+			preparedStatement.setString(3, directory.getUser());
+			preparedStatement.setString(4, directory.getLink());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -60,62 +57,65 @@ public class SalePostDAO {
 		}
 	}
 
-	public SalePost selectSalePost(int id) {
-		SalePost salePost = null;
+	public Directory selectDirectory(int id) {
+		Directory directory = null;
 		try (Connection connection = getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SALES_BY_ID);) {
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_DIRECTORIES_BY_ID);) {
 			preparedStatement.setInt(1, id);
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				String name = rs.getString("name");
+				String title = rs.getString("title");
 				String description = rs.getString("description");
 				String user = rs.getString("user");
-				salePost = new SalePost(id, name, description, user);
+				String link = rs.getString("link");
+				directory = new Directory(id, title, description, user, link);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-		return salePost;
+		return directory;
 	}
 
-	public List<SalePost> selectAllSales() {
-		List<SalePost> salePosts = new ArrayList<>();
+	public List<Directory> selectAllDirectories() {
+		List<Directory> directories = new ArrayList<>();
 		try (Connection connection = getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SALES);) {
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_DIRECTORIES);) {
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String name = rs.getString("name");
+				String title = rs.getString("title");
 				String description = rs.getString("description");
 				String user = rs.getString("user");
-				salePosts.add(new SalePost(id, name, description, user));
+				String link = rs.getString("link");
+				directories.add(new Directory(id, title, description, user, link));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-		return salePosts;
+		return directories;
 	}
 
-	public boolean deleteSale(int id) throws SQLException {
+	public boolean deleteDirectory(int id) throws SQLException {
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(DELETE_SALES_SQL);) {
+				PreparedStatement statement = connection.prepareStatement(DELETE_DIRECTORIES_SQL);) {
 			statement.setInt(1, id);
 			rowDeleted = statement.executeUpdate() > 0;
 		}
 		return rowDeleted;
 	}
 
-	public boolean updateSale(SalePost salePost) throws SQLException {
+	public boolean updateDirectory(Directory directory) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_SALES_SQL);) {
-			statement.setString(1, salePost.getName());
-			statement.setString(2, salePost.getDescription());
-			statement.setString(3, salePost.getUser());
-			statement.setInt(4, salePost.getId());
+				PreparedStatement statement = connection.prepareStatement(UPDATE_DIRECTORY_SQL);) {
+			statement.setString(1, directory.getTitle());
+			statement.setString(2, directory.getDescription());
+			statement.setString(3, directory.getUser());
+			statement.setString(3, directory.getLink());
+			statement.setInt(4, directory.getId());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}

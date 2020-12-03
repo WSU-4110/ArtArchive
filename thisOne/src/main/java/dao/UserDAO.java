@@ -15,13 +15,13 @@ public class UserDAO {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "password123";
 
-	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password) VALUES "
-			+ " (?, ?, ?, ?);";
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country, password, firstName, lastName, description, favoriteColor) VALUES "
+			+ " (?, ?, ?, ?, ?, ?, ?, ?);";
 
-	private static final String SELECT_USER_BY_ID = "select id,name,email,country,password from users where id =?";
+	private static final String SELECT_USER_BY_ID = "select id,name,email,country,password,firstName,lastName,description,favoriteColor from users where id =?";
 	private static final String SELECT_ALL_USERS = "select * from users";
 	private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-	private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =?, password =? where id = ?;";
+	private static final String UPDATE_USERS_SQL = "update users set name =?,email=?,country =?,password =?,firstName =?,lastName =?,description=?,favoriteColor=? where id = ?;";
 
 	public UserDAO() {
 	}
@@ -66,6 +66,11 @@ public class UserDAO {
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getCountry());
+			preparedStatement.setString(4, user.getFirstName());
+			preparedStatement.setString(5, user.getLastName());
+			preparedStatement.setString(6, user.getDescription());
+			preparedStatement.setString(7, user.getFavoriteColor());
+			preparedStatement.setInt(8, user.getId());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -90,7 +95,11 @@ public class UserDAO {
 				String email = rs.getString("email");
 				String country = rs.getString("country");
 				String password = rs.getString("password");
-				user = new User(id, name, email, country, password);
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String description = rs.getString("description");
+				String favoriteColor = rs.getString("favoriteColor");
+				user = new User(id, name, email, country, password, firstName, lastName, description, favoriteColor);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -118,7 +127,11 @@ public class UserDAO {
 				String email = rs.getString("email");
 				String country = rs.getString("country");
 				String password = rs.getString("password");
-				users.add(new User(id, name, email, country, password));
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String description = rs.getString("description");
+				String favoriteColor = rs.getString("favoriteColor");
+				users.add(new User(id, name, email, country, password, firstName, lastName, description, favoriteColor));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -143,7 +156,11 @@ public class UserDAO {
 			statement.setString(1, user.getName());
 			statement.setString(2, user.getEmail());
 			statement.setString(3, user.getCountry());
-			statement.setInt(4, user.getId());
+			statement.setString(4, user.getFirstName());
+			statement.setString(5, user.getLastName());
+			statement.setString(6, user.getDescription());
+			statement.setString(7, user.getFavoriteColor());
+			statement.setInt(8, user.getId());
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}
