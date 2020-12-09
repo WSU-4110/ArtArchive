@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="WEB-INF/styles.css" rel="stylesheet" type="text/css">
-
 <header><h1>ART ARCHIVE - Contact</h1></header>
 <%@ include file="WEB-INF/head.html" %>
 <body>
@@ -9,7 +8,7 @@
     <div class="content">
         <h2>Contact Us</h2>
         <p>If you need to get in contact with us, fill out the form below to send a message</p>
-        <form method = "post" action = "contact.php">
+        <form action="mailto:shussain1104@gmail.com" method="GET">
             <label for="fname">First Name</label>
                  <input type="text" id="fname" name="firstname" placeholder="Your name..">
             <label for="lname">Last Name</label>
@@ -25,8 +24,8 @@
             <p> If other is selected, explain in the message field below.</p>
             <label> <--!for ="message"--> Message:</label>
                  <textarea name = "Message" rows = "5" cols = "15"></textarea>
-                    <button type="submit" value = "Send Message Now" id="mySubmit" required = "required" a href = "mailto:s.hussain1104@gmail.com">
-                      Send Message Now</button>
+                    <button type="submit"  value = "Send Message Now" id="mySubmit" required = "required">
+                    Send Message Now</button>
 					</form>
     </div>
 </body>
