@@ -243,7 +243,7 @@ public class UserServlet extends HttpServlet {
 		String topic_title = request.getParameter("topic_title");
 		String topicquestion = request.getParameter("topicquestion");
 		Questionboard question = new Questionboard(name, topic_title, topicquestion);
-		questionDAO.insertQuestions(question);
+		questionDAO.insertquestion(question);
 		response.sendRedirect("questionboard");
 	}
 
