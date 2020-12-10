@@ -68,7 +68,7 @@
                                                 <c:out value="${review[1].review}" />
                                             </p>
                                             <p>
-                                                <c:out value="${review[1].user}" /></a></p>
+                                                <c:out value="${review[1].user}" /></p>
                                         </div>
                                     </div>
                                 </c:forEach>

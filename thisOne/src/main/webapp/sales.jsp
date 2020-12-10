@@ -108,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <!-- reviewe end -->
+            <!-- review end -->
             <div class="row">
                 <c:forEach var="salePost" items="${listSalePost}" varStatus="loop">
                     <div class="col-lg-2 col-md-3 col-xs-4 ">
@@ -127,7 +127,6 @@
                             <div style="display: flex; justify-content: center;" class="mb-3">
                                 <c:choose>
                                     <c:when test="${isReviewed[loop.index]}">
-
                                     </c:when>
                                     <c:otherwise>
                                         <button type="button" class="btn btn-primary" onclick='handleClick(" <c:out
@@ -136,7 +135,6 @@
                                         </button>
                                     </c:otherwise>
                                 </c:choose>
-
                             </div>
                         </div>
                     </div>
