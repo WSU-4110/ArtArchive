@@ -1,6 +1,8 @@
 package web;
+
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,12 +12,15 @@ import javax.servlet.http.*;
 
 import dao.DirectoryDAO;
 import dao.QuestionboardDAO;
+import dao.ReviewDAO;
 import model.Directory;
 import model.Questionboard;
+import model.Review;
 import model.User;
 import model.SalePost;
 import dao.UserDAO;
 import dao.SalePostDAO;
+
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,12 +29,14 @@ public class UserServlet extends HttpServlet {
 	private DirectoryDAO directoryDAO;
 	private HttpSession session = null;
 	private QuestionboardDAO questionDAO;
-	
+	private ReviewDAO reviewDAO;
+
 	public void init() {
 		userDAO = new UserDAO();
 		salePostDAO = new SalePostDAO();
 		directoryDAO = new DirectoryDAO();
 		questionDAO = new QuestionboardDAO();
+		reviewDAO = new ReviewDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,84 +44,88 @@ public class UserServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
 
 		try {
 			switch (action) {
-			case "/register":
-				showRegisterForm(request, response);
-				break;
-			case "/userLogin":
-				userLogin(request, response);
-				break;
-			case "/postSale":
-				postArtSale(request, response);
-				break;
-			case "/postDirectory":
-				postDirectory(request, response);
-				break;
-			case "/insert":
-				insertUser(request, response);
-				break;
-			case "/delete":
-				deleteUser(request, response);
-				break;
-			case "/edit":
-			//	showEditForm(request, response);
-				break;
-			case "/update":
-				updateUser(request, response);
-				break;
-			case "/tutor":
-				showTutors(request, response);
-				break;
-			case "/listUsers":
-				listUsers(request, response);
-				break;
-			case "/listSales":
-				listSales(request, response);
-				break;
-			case "/listDirectories":
-				listDirectories(request, response);
-				break;
-			case "/questionboard":
-				showQuestionForm(request, response);
-				break;
-			case "/profile":
-				showProfile(request, response);
-				break;
-			case "/aaDirectories":
-				showAADirectory(request, response);
-				break;
-			case "/ttDirectory":
-				showTTDirectory(request, response);
-				break;
-			case "/refDirectory":
-				showRefDirectory(request, response);
-				break;
-			case "/contact":
-				showContact(request, response);
-				break;
-			case "/insertquestion":
-				insertquestion(request,response);
-				break;
-			case "/listquestions":
-				listquestions(request, response);
-				break;
-			case "/deletequestion":
-				deletequestion(request,response);
-				break;
-			case "/editquestion":
-				editQuestion(request,response);
-				break;
-			case "/showHome":
-				showHomePage(request,response);
-				break;
-			default:
-				listUsers(request, response);
-				break;
+				case "/register":
+					showRegisterForm(request, response);
+					break;
+				case "/userLogin":
+					userLogin(request, response);
+					break;
+				case "/postSale":
+					postArtSale(request, response);
+					break;
+				case "/postReview":
+					postReview(request, response);
+					break;
+				case "/postDirectory":
+					postDirectory(request, response);
+					break;
+				case "/insert":
+					insertUser(request, response);
+					break;
+				case "/delete":
+					deleteUser(request, response);
+					break;
+				case "/edit":
+					// showEditForm(request, response);
+					break;
+				case "/update":
+					updateUser(request, response);
+					break;
+				case "/tutor":
+					showTutors(request, response);
+					break;
+				case "/listUsers":
+					listUsers(request, response);
+					break;
+				case "/listSales":
+					listSales(request, response);
+					break;
+				case "/listDirectories":
+					listDirectories(request, response);
+					break;
+				case "/questionboard":
+					showQuestionForm(request, response);
+					break;
+				case "/profile":
+					showProfile(request, response);
+					break;
+				case "/aaDirectories":
+					showAADirectory(request, response);
+					break;
+				case "/ttDirectory":
+					showTTDirectory(request, response);
+					break;
+				case "/refDirectory":
+					showRefDirectory(request, response);
+				case "/review":
+					showReview(request, response);
+					break;
+				case "/contact":
+					showContact(request, response);
+					break;
+				case "/insertquestion":
+					insertquestion(request, response);
+					break;
+				case "/listquestions":
+					listquestions(request, response);
+					break;
+				case "/deletequestion":
+					deletequestion(request, response);
+					break;
+				case "/editquestion":
+					editQuestion(request, response);
+					break;
+				case "/showHome":
+					showHomePage(request, response);
+					break;
+				default:
+					listUsers(request, response);
+					break;
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
@@ -128,6 +139,7 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
 		dispatcher.forward(request, response);
 	}
+
 	private void listquestions(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<Questionboard> listquestions = questionDAO.selectAllData();
@@ -136,19 +148,18 @@ public class UserServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void userLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	private void userLogin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
 		session = request.getSession();
 		session.setAttribute("currentUser", name);
 		session.setAttribute("currentPassword", password);
 		List<User> listProfileUser = userDAO.selectUser(name);
-		if (listProfileUser.isEmpty()){
+		if (listProfileUser.isEmpty()) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("register");
 			dispatcher.forward(request, response);
-		}
-		else
-		{
+		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("listSales");
 			dispatcher.forward(request, response);
 		}
@@ -157,7 +168,18 @@ public class UserServlet extends HttpServlet {
 	private void listSales(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		List<SalePost> listSalePost = salePostDAO.selectAllSales();
+		List<Review> listReview = reviewDAO.selectAllReviews();
+		System.out.println("......................" + listReview.size());
+		String user = (String) session.getAttribute("currentUser");
+		boolean isReviewed[] = new boolean[listSalePost.size()];
+		for (int idx = 0; idx < listSalePost.size(); idx++) {
+			isReviewed[idx] = listReview.contains(new Review(user, listSalePost.get(idx).getId()));
+
+		}
 		request.setAttribute("listSalePost", listSalePost);
+		request.setAttribute("listReview", listReview);
+		request.setAttribute("user", user);
+		request.setAttribute("isReviewed", isReviewed);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("sales.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -184,24 +206,23 @@ public class UserServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showQuestionForm (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showQuestionForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("questionBoard.jsp");
-		dispatcher.forward(request,response);
-	}
-
-/*	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		//User existingUser = userDAO.selectUser((String)session.getAttribute("currentUser"));
-		RequestDispatcher dispatcher = request.getRequestDispatcher("registerForm.jsp");
-		request.setAttribute("user", existingUser);
 		dispatcher.forward(request, response);
 	}
-*/
-	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
+
+	/*
+	 * private void showEditForm(HttpServletRequest request, HttpServletResponse
+	 * response) throws SQLException, ServletException, IOException { int id =
+	 * Integer.parseInt(request.getParameter("id")); //User existingUser =
+	 * userDAO.selectUser((String)session.getAttribute("currentUser"));
+	 * RequestDispatcher dispatcher =
+	 * request.getRequestDispatcher("registerForm.jsp");
+	 * request.setAttribute("user", existingUser); dispatcher.forward(request,
+	 * response); }
+	 */
+	private void insertUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
@@ -215,12 +236,13 @@ public class UserServlet extends HttpServlet {
 		userDAO.insertUser(newUser);
 		response.sendRedirect("listSales");
 	}
+
 	private void insertquestion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		String name = request.getParameter("topic_author");
 		String topic_title = request.getParameter("topic_title");
 		String topicquestion = request.getParameter("topicquestion");
-		Questionboard question = new Questionboard(name, topic_title,topicquestion);
+		Questionboard question = new Questionboard(name, topic_title, topicquestion);
 		questionDAO.insertQuestions(question);
 		response.sendRedirect("questionboard");
 	}
@@ -229,10 +251,21 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		String name = request.getParameter("name");
 		String description = request.getParameter("description");
-		String user = (String)session.getAttribute("currentUser");
+		String user = (String) session.getAttribute("currentUser");
 		String file = request.getParameter("file");
 		SalePost newSale = new SalePost(name, description, user, file);
 		salePostDAO.insertSale(newSale);
+		response.sendRedirect("listSales");
+	}
+
+	private void postReview(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		String review = request.getParameter("review");
+		String user = request.getParameter("user");
+		int stars = Integer.parseInt(request.getParameter("stars").trim());
+		int salesId = Integer.parseInt(request.getParameter("saleId").trim());
+		Review rv = new Review(review, user, salesId, stars);
+		reviewDAO.insertReview(rv);
 		response.sendRedirect("listSales");
 	}
 
@@ -240,15 +273,14 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException {
 		String title = request.getParameter("title");
 		String description = request.getParameter("description");
-		String user = (String)session.getAttribute("currentUser");
+		String user = (String) session.getAttribute("currentUser");
 		String link = request.getParameter("link");
 		Directory directory = new Directory(title, description, user, link);
 		directoryDAO.insertDirectory(directory);
 		response.sendRedirect("listDirectories");
 	}
 
-	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -263,22 +295,24 @@ public class UserServlet extends HttpServlet {
 		userDAO.updateUser(book);
 		response.sendRedirect("listUsers");
 	}
+
 	private void editQuestion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		int topic_id = Integer.parseInt(request.getParameter("topic_id"));
 		String topic_author = request.getParameter("topic_author");
 		String topic_title = request.getParameter("topic_title");
 		String topicquestion = request.getParameter("topicquestion");
-		Questionboard question2 = new Questionboard(topic_id,topic_author,topic_title,topicquestion);
+		Questionboard question2 = new Questionboard(topic_id, topic_author, topic_title, topicquestion);
 		questionDAO.editquestion(question2);
 		response.sendRedirect("listquestions");
 	}
-	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
+
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		userDAO.deleteUser(id);
 		response.sendRedirect("listUsers");
 	}
+
 	private void deletequestion(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -288,7 +322,7 @@ public class UserServlet extends HttpServlet {
 
 	private void showProfile(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		String name = (String)session.getAttribute("currentUser");
+		String name = (String) session.getAttribute("currentUser");
 		List<User> listProfileUser = userDAO.selectUser(name);
 		request.setAttribute("listProfileUser", listProfileUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("profilepage.jsp");
@@ -298,45 +332,54 @@ public class UserServlet extends HttpServlet {
 
 	private void listProfileUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		String name = (String)session.getAttribute("currentUser");
+		String name = (String) session.getAttribute("currentUser");
 		List<User> listProfileUser = userDAO.selectUser(name);
 		request.setAttribute("listProfileUser", listProfileUser);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("profilepage.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	private void showAADirectory (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showAADirectory(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("directories.jsp");
-		dispatcher.forward(request,response);
+		dispatcher.forward(request, response);
 	}
 
-	private void showTTDirectory (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showTTDirectory(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ttDirectory.jsp");
-		dispatcher.forward(request,response);
+		dispatcher.forward(request, response);
 	}
 
-	private void showRefDirectory (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showRefDirectory(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("refDirectory.jsp");
-		dispatcher.forward(request,response);
+		dispatcher.forward(request, response);
 	}
 
-	private void showContact (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showReview(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String name = (String) session.getAttribute("currentUser");
+		List<Review> listProfileUser = reviewDAO.selectAllReviews();
+		ArrayList<Object> listRev = new ArrayList<Object>();
+		for (Review review : listProfileUser) {
+			SalePost sp = salePostDAO.selectSalePost(review.getSalesID());
+			listRev.add(new Object[] { sp, review });
+		}
+		request.setAttribute("listReview", listRev);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("review.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	private void showContact(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("contact.jsp");
-		dispatcher.forward(request,response);
+		dispatcher.forward(request, response);
 	}
 
-	private void showHomePage (HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	private void showHomePage(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("homepage.jsp");
-		dispatcher.forward(request,response);
+		dispatcher.forward(request, response);
 	}
 }
