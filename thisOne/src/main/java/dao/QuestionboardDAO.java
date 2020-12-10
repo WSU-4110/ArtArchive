@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import model.Directory;
 import model.Questionboard;
 
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "password123";
+    private String jdbcPassword = "DetroitandNewYork#1104";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
     private static final String DELETE_QUESTIONS = "DELETE FROM questionboard";
     private static final String UPDATE_QUESTIONS = "update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";
@@ -93,55 +95,38 @@ public class QuestionboardDAO {
         return question;
     }
 
-    public void insertQuestions(Questionboard question) throws SQLException {
+    public void insertquestion(Questionboard question) throws SQLException {
         System.out.println(INSERT_QUESTIONS_SQL);
-
-        try {
-            Connection connection = this.getConnection();
-
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUESTIONS_SQL);
-
-                try {
-                    preparedStatement.setString(1, question.getTopic_author());
-                    preparedStatement.setString(2, question.getTopic_title());
-                    preparedStatement.setString(3, question.getTopicquestion());
-                    System.out.println(preparedStatement);
-                    preparedStatement.executeUpdate();
-                } catch (Throwable var8) {
-                    if (preparedStatement != null) {
-                        try {
-                            preparedStatement.close();
-                        } catch (Throwable var7) {
-                            var8.addSuppressed(var7);
-                        }
-                    }
-
-                    throw var8;
-                }
-
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-            } catch (Throwable var9) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var6) {
-                        var9.addSuppressed(var6);
-                    }
-                }
-
-                throw var9;
-            }
-
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException var10) {
-            this.printSQLException(var10);
+        // try-with-resource statement will auto close the connection.
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_QUESTIONS_SQL)) {
+            preparedStatement.setString(1, question.getTopic_title());
+            preparedStatement.setString(2, question.getTopicquestion());
+            preparedStatement.setString(3, question.getTopic_author());
+            System.out.println(preparedStatement);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            printSQLException(e);
         }
+    }
 
+    public List<Questionboard> selectAllData() {
+        List<Questionboard> questions = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_QUESTIONS);) {
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int topic_id = rs.getInt("topic_id");
+                String topic_title = rs.getString("topic_title");
+                String topicquestion = rs.getString("topicquestion");
+                String topic_author = rs.getString("topic_author");
+                questions.add(new Questionboard(topic_id, topic_title, topicquestion, topic_author));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return questions;
     }
 
     private void printSQLException(SQLException ex) {
@@ -166,63 +151,6 @@ public class QuestionboardDAO {
                 System.out.println("Cause: " + t);
             }
         }
-    }
-
-    public List<Questionboard> selectAllData() {
-        ArrayList questions = new ArrayList();
-
-        try {
-            Connection connection = this.getConnection();
-
-            try {
-                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_QUESTIONS);
-
-                try {
-                    System.out.println(preparedStatement);
-                    ResultSet rs = preparedStatement.executeQuery();
-
-                    while(rs.next()) {
-                        int topic_id = rs.getInt("topic_id");
-                        String topic_author = rs.getString("topic_author");
-                        String topic_title = rs.getString("topic_title");
-                        String topicquestion = rs.getString("topicquestion");
-                        questions.add(new Questionboard(topic_id, topic_author, topic_title, topicquestion));
-                    }
-                } catch (Throwable var11) {
-                    if (preparedStatement != null) {
-                        try {
-                            preparedStatement.close();
-                        } catch (Throwable var10) {
-                            var11.addSuppressed(var10);
-                        }
-                    }
-
-                    throw var11;
-                }
-
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-            } catch (Throwable var12) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var9) {
-                        var12.addSuppressed(var9);
-                    }
-                }
-
-                throw var12;
-            }
-
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException var13) {
-            this.printSQLException(var13);
-        }
-
-        return questions;
     }
 
     public boolean deletequestion(int id) throws SQLException {
