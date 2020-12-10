@@ -12,12 +12,14 @@ public class Questionboard {
     }
 
     public Questionboard(String topic_author, String topic_title, String topicquestion) {
+        super();
         this.topic_author = topic_author;
         this.topic_title = topic_title;
         this.topicquestion = topicquestion;
     }
 
     public Questionboard(int topic_id, String topic_author, String topic_title, String topicquestion) {
+        super();
         this.topic_id = topic_id;
         this.topic_author = topic_author;
         this.topic_title = topic_title;
