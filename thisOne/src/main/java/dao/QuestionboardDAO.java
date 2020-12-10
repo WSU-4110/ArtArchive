@@ -1,6 +1,4 @@
-
 package dao;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,11 +12,11 @@ import model.Questionboard;
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "password123";
+    private String jdbcPassword = "DetroitandNewYork#1104";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
-    private static final String DELETE_QUESTIONS = "DELETE FROM QUESTIONBOARD";
-    private static final String UPDATE_QUESTIONS = "update QUESTIONBOARD set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";
-
+    private static final String DELETE_QUESTIONS = "DELETE FROM questionboard";
+    private static final String UPDATE_QUESTIONS = "update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";
+    private static final String SELECT_ALL_QUESTIONS = "SELECT * FROM questionboard";
     public QuestionboardDAO() {
     }
 
@@ -177,7 +175,7 @@ public class QuestionboardDAO {
             Connection connection = this.getConnection();
 
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM questionboard");
+                PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_QUESTIONS);
 
                 try {
                     System.out.println(preparedStatement);

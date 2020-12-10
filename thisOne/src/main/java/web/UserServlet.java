@@ -1,5 +1,4 @@
 package web;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,9 +16,6 @@ import model.User;
 import model.SalePost;
 import dao.UserDAO;
 import dao.SalePostDAO;
-
-
-
 @WebServlet("/")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

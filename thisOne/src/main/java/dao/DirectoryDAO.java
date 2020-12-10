@@ -13,15 +13,17 @@ import java.util.List;
 public class DirectoryDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "password123";
-
-	private static final String INSERT_DIRECTORY_SQL = "INSERT INTO directory" + "  (title, description, user, link) VALUES "
-			+ " (?, ?, ?, ?);";
-
-	private static final String SELECT_DIRECTORIES_BY_ID = "select id,title,description,user,link from directory where id =?";
-	private static final String SELECT_ALL_DIRECTORIES = "select * from directory";
-	private static final String DELETE_DIRECTORIES_SQL = "delete from directory where id = ?;";
-	private static final String UPDATE_DIRECTORY_SQL = "update directory set title = ?, description= ?, user =?, link=? where id = ?;";
+	private String jdbcPassword = "DetroitandNewYork#1104";
+	private static final String INSERT_DIRECTORY_SQL =
+			"INSERT INTO directory" + "  (title, description, user, link) VALUES " + " (?, ?, ?, ?);";
+	private static final String SELECT_DIRECTORIES_BY_ID =
+			"select id,title,description,user,link from directory where id =?";
+	private static final String SELECT_ALL_DIRECTORIES =
+			"select * from directory";
+	private static final String DELETE_DIRECTORIES_SQL =
+			"delete from directory where id = ?;";
+	private static final String UPDATE_DIRECTORY_SQL =
+			"update directory set title = ?, description= ?, user =?, link=? where id = ?;";
 
 	public DirectoryDAO() {
 	}

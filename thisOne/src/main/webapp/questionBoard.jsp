@@ -21,30 +21,44 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <c:if test="${question != null}">
-                        <form action="update" method="post">
-                    </c:if>
-                    <c:if test="${question == null}">
+                    <form action="update" method="post">
                     <form method = "post" action = "insertquestion">
                         <div class="form-group">
                             <caption>
                             <label> Name/Username: </label><br>
-                                <c:if test="${user != null}">
-                            <input type="text" name="topic_author" <c:out value="${question.topic_author}"/> size=40 maxlength=150>
-                                </c:if>
+                            <input type="text" name="topic_author" size=40 maxlength=150>
                             </caption>
                             <label>Topic:</label><br>
                             <input type="text" name="topic_title" size=40 maxlength=150>
                             <left><label for="subject">Question:</label></left>
                             <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
-                            <button type="submit" value = "Submit"  required = "required">Submit</button>
+                            <button type="submit" value = "Submit"  required = "required">Submit</button></div>
+                    </form></form>
+
+                            </div>
                         </div>
-                    </form>
-                    </c:if>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-lg">
+                <div class="articles card">
+                    <div class="card-header d-flex align-items-center">
+                        <h2 class="h3">Latest Questions</h2>
+                    </div>
+                    <div class="card-body no-padding">
+                        <c:forEach var="Questionboard" items="${listquestions}">
+                            <div class="item d-flex align-items-center">
+                                <div class="text"><a href="<c:out value="${Questionboard.topicquestion}" />">
+                                    <h3 class="h5"><c:out value="${Questionboard.topic_title}" /></h3></a><small>
+                                    Posted by <c:out value="${Questionboard.topic_author}" />   </small></div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                 </div>
+            </div>
+        </div>
     </body>
 </main>
 </html>
