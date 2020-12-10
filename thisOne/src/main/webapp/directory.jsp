@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Link</label>
-                                <input type="text" name="link" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.link}' />"/>
+                                <input type="text" name="link" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your directory url..." value="<c:out value='${directory.link}' />"/>
                                 <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>

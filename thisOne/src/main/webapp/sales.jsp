@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label>Piece URL</label>
                                     <input type="text" name="file" class="form-control" size="45"
-                                        aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'"
+                                        aria-describedby="emailHelp" placeholder="Enter your piece url..."
                                         value="<c:out value='${salePost.file}' />" />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>

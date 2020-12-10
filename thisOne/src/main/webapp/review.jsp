@@ -45,9 +45,7 @@
 
     <body>
         <div class="container">
-            <div class="row">
-                <h2>Reviews</h2>
-            </div>
+                <center><h2>Reviews</h2></center>
         </div>
         <div class="carousel-reviews broun-block">
             <div class="container">
