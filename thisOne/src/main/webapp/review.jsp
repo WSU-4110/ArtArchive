@@ -51,36 +51,39 @@
         </div>
         <div class="carousel-reviews broun-block">
             <div class="container">
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <c:forEach var="review" items="${listReview}" varStatus="loop">
-                            <div style="display: flex; flex-wrap: wrap; margin: 1em; flex-direction: row;">
-                                <div style="background-color: aliceblue; padding: 2em;">
-                                    <h3>
-                                        <c:out value="${review[0].name}" />
-                                    </h3>
-                                    <h5>Rating:
-                                        <c:out value="${review[1].stars}" /> ★</h5>
-                                    <p>
-                                        <c:out value="${review[1].review}" />
-                                    </p>
-                                    <p>
-                                        <c:out value="${review[1].user}" /></a></p>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
+                <div class="row">
+                    <div id="carousel-reviews" class="carousel slide" data-ride="carousel">
 
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <c:forEach var="review" items="${listReview}" varStatus="loop">
+                                    <div style="display: flex; flex-wrap: wrap;">
+                                        <div style="background-color: aliceblue; padding: 2em;">
+                                            <h3>
+                                                <c:out value="${review[0].name}" />
+                                            </h3>
+                                            <h5>Rating:
+                                                <c:out value="${review[1].stars}" /> ★</h5>
+                                            <p>
+                                                <c:out value="${review[1].review}" />
+                                            </p>
+                                            <p>
+                                                <c:out value="${review[1].user}" /></p>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+
+                        </div>
+                        <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
                 </div>
-                <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
             </div>
-        </div>
-        </div>
         </div>
     </body>
 

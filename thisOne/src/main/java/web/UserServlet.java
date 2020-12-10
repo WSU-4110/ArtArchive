@@ -144,7 +144,7 @@ public class UserServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		List<Questionboard> listquestions = questionDAO.selectAllData();
 		request.setAttribute("listquestions", listquestions);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("questionBoard.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("questionboard.jsp");
 		dispatcher.forward(request, response);
 	}
 
