@@ -12,7 +12,7 @@ import model.Questionboard;
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "DetroitandNewYork#1104";
+    private String jdbcPassword = "password123";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
     private static final String DELETE_QUESTIONS = "DELETE FROM questionboard";
     private static final String UPDATE_QUESTIONS = "update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";

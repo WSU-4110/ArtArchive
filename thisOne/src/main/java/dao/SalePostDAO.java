@@ -13,7 +13,7 @@ import model.SalePost;
 public class SalePostDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/test";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "DetroitandNewYork#1104";
+	private String jdbcPassword = "password123";
 
 	private static final String INSERT_SALES_SQL = "INSERT INTO salesBoard" + "  (name, description, user, file) VALUES "
 			+ " (?, ?, ?, ?);";
