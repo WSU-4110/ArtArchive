@@ -47,11 +47,11 @@
                         <h2 class="h3">Latest Questions</h2>
                     </div>
                     <div class="card-body no-padding">
-                        <c:forEach var="questionboard" items="${listquestions}">
+                        <c:forEach var="question" items="${listquestions}">
                             <div class="item d-flex align-items-center">
-                                <div class="text"><c:out value="${questionboard.topicquestion}" />
-                                    <h3 class="h5"><c:out value="${questionboard.topic_title}" /></h3><small>
-                                    Posted by <c:out value="${questionboard.topic_author}" />   </small></div>
+                                <div class="text"><c:out value="${question.topicquestion}" />
+                                    <h3 class="h5"><c:out value="${question.topic_title}" /></h3><small>
+                                    Posted by <c:out value="${question.topic_author}" />   </small></div>
                             </div>
                         </c:forEach>
                     </div>
