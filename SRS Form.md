@@ -125,7 +125,7 @@ Origin: Based on initial project specification document, team members came up wi
 Version: 1.0	Date: 09/21/2020	Priority: 1
 
 
-FR9.  Reviews for Artist Sale -REMOVED
+FR9.  Reviews for Artist Sale
 Goal: Allow users to leave reviews on artwork they have bought from the website.
 Stakeholders: Users
 When a user of the site buys artwork, they are able to leave a review on how the artwork and purchase was. The review consists of an overall score out of five. The user can also post pictures they took of the purchase made in the review so other users will develop an interest to buy artwork. 
