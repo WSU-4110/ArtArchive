@@ -21,7 +21,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="update" method="post">
                     <form method = "post" action = "insertquestion">
                         <div class="form-group">
                             <caption>
@@ -33,7 +32,7 @@
                             <left><label for="subject">Question:</label></left>
                             <textarea id="subject" name="topicquestion" placeholder="What is Your Question?" style="height:200px"></textarea>
                             <button type="submit" value = "Submit"  required = "required">Submit</button></div>
-                    </form></form>
+                    </form>
 
                             </div>
                         </div>
@@ -48,11 +47,11 @@
                         <h2 class="h3">Latest Questions</h2>
                     </div>
                     <div class="card-body no-padding">
-                        <c:forEach var="Questionboard" items="${listquestions}">
+                        <c:forEach var="questionboard" items="${listquestions}">
                             <div class="item d-flex align-items-center">
-                                <div class="text"><a href="<c:out value="${Questionboard.topicquestion}" />">
-                                    <h3 class="h5"><c:out value="${Questionboard.topic_title}" /></h3></a><small>
-                                    Posted by <c:out value="${Questionboard.topic_author}" />   </small></div>
+                                <div class="text"><c:out value="${questionboard.topicquestion}" />
+                                    <h3 class="h5"><c:out value="${questionboard.topic_title}" /></h3><small>
+                                    Posted by <c:out value="${questionboard.topic_author}" />   </small></div>
                             </div>
                         </c:forEach>
                     </div>
