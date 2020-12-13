@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import model.Directory;
 import model.Questionboard;
 
 public class QuestionboardDAO {
@@ -95,7 +94,7 @@ public class QuestionboardDAO {
         return question;
     }
 
-    public void insertquestion(Questionboard question) throws SQLException {
+    public Object insertquestion(Questionboard question) throws SQLException {
         System.out.println(INSERT_QUESTIONS_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
@@ -108,6 +107,7 @@ public class QuestionboardDAO {
         } catch (SQLException e) {
             printSQLException(e);
         }
+        return null;
     }
 
     public List<Questionboard> selectAllData() {
