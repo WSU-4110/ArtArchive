@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import model.Directory;
 import model.Questionboard;
 
 public class QuestionboardDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/test";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "DetroitandNewYork#1104";
+    private String jdbcPassword = "password123";
     private static final String INSERT_QUESTIONS_SQL = "INSERT INTO questionboard  (topic_author, topic_title, topicquestion) VALUES  (?, ?, ?);";
     private static final String DELETE_QUESTIONS = "DELETE FROM questionboard";
     private static final String UPDATE_QUESTIONS = "update questionboard set topic_author = ?,topic_title= ?, topicquestion =? where topic_id = ?";
@@ -95,7 +94,7 @@ public class QuestionboardDAO {
         return question;
     }
 
-    public void insertquestion(Questionboard question) throws SQLException {
+    public Object insertquestion(Questionboard question) throws SQLException {
         System.out.println(INSERT_QUESTIONS_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
@@ -108,6 +107,7 @@ public class QuestionboardDAO {
         } catch (SQLException e) {
             printSQLException(e);
         }
+        return null;
     }
 
     public List<Questionboard> selectAllData() {

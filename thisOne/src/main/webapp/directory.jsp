@@ -31,12 +31,12 @@
                             <div class="form-group">
                                 <label>Description</label>
                                 <input type="text" name="description" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your title - i.e. 'Rose Petals'" value="<c:out value='${directory.description}' />"/>
-                                <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
+                                <small class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label>Link</label>
                                 <input type="text" name="link" class="form-control"  size="45" aria-describedby="emailHelp" placeholder="Enter your directory url..." value="<c:out value='${directory.link}' />"/>
-                                <small class="form-text text-muted">Give a descriptive, appropriate title to your work</small>
+                                <small class="form-text text-muted">Please input your share link here</small>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
