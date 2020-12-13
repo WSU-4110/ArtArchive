@@ -16,9 +16,16 @@ margin: 35px;
 border-radius: 25px;
 .mx-auto;
 }
+.card {
+    float: none;
+    margin: 0 auto 10px;
+}
+.mx-auto
 </style>
 <body>
 <%@ include file="WEB-INF/navbar.html" %>
+<div class="col d-flex justify-content-center">
+
 <div class="one">
 <div class="card">
     <img class="card-img-top">
@@ -35,6 +42,7 @@ border-radius: 25px;
             </c:forEach>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

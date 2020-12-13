@@ -22,7 +22,7 @@
                     <option value="other">Other</option><br>
                     </select>
             <p> If other is selected, explain in the message field below.</p>
-            <label> <--!for ="message"--> Message:</label>
+            <label>Message:</label>
                  <textarea name = "Message" rows = "5" cols = "15"></textarea>
                     <button type="submit"  value = "Send Message Now" id="mySubmit" required = "required">
                     Send Message Now</button>
